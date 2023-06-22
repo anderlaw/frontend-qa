@@ -34,3 +34,9 @@
 .main-nav-container li a:hover {
     color: #FFF;
 }
+.arrow-icon{
+    display: inline-block;
+}
+.arrow-icon.active{
+    transform: rotate(90deg);
+}

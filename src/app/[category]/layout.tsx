@@ -3,10 +3,10 @@ export default function CategoryLayout({
 }: {
   children: React.ReactNode
 }) {
-
   return (
     <div style={{
-      margin:'40px',
+      margin:'40px auto 0',
+      width:'700px'
     }}> {children} </div>
   )
 }
