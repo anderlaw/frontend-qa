@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sample on 前端</title>
+    <link>/zh/tags/sample/</link>
+    <description>Recent content in Sample on 前端</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 03 Apr 2021 22:53:58 +0530</lastBuildDate><atom:link href="/zh/tags/sample/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emoji支持！！！！</title>
+      <link>/zh/posts/emoji-support/</link>
+      <pubDate>Sat, 03 Apr 2021 22:53:58 +0530</pubDate>
+      
+      <guid>/zh/posts/emoji-support/</guid>
+      <description>来电中文吧啊个v啊啊嘎嘎</description>
+    </item>
+    
+  </channel>
+</rss>
