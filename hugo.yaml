@@ -380,7 +380,7 @@ params:
         - "React"
         - "Node"
         - "Express"
-  favicon: favicon2.ico
+  favicon: /favicon2.ico
   author:
     name: Your Name
     url: https://your.site
