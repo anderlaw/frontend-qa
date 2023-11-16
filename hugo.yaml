@@ -19,20 +19,20 @@ languages:
     languageCode: en-US
     contentDir: content/en
     # og>title and <title>tag
-    title: QAs About FrontEnd
+    title: It is All about FrontEnd
     params:
       disabled: false
       # meta 
       # og>site_name
-      title: "QAs About FrontEnd"
+      title: It is All about FrontEnd
       # og>descirption
-      description: All you need to know about Front-End, Q&As, techniques, tools, business, latest tech events
+      description: All you need to know about Front-End, technologies, skills, tools, issues
     weight: 1
   zh:
     languageName: 中文
     languageCode: zh-CN
     contentDir: content/zh
-    title: 前端
+    title: 前端引路人
     params:
       disabled: false
       title: 前端问题终结者
