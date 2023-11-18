@@ -2,6 +2,7 @@
 title: "Front End Developer Roadmap 2024: Mastering the Evolving Landscape"
 date: 2023-11-18T20:14:53+08:00
 draft: false
+image: /post/road-map.jpeg
 ---
 
 Greetings fellow developers! As we step into 2024, the frontend development landscape continues to evolve at a rapid pace. With over a decade of experience in the field, I'm excited to share a comprehensive roadmap to guide you through the challenges and opportunities that lie ahead. Whether you're a seasoned developer or just starting your journey, this roadmap is designed to equip you for success in the dynamic world of frontend development.
