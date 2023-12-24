@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/favicon2.ico type="image/gif">
+
+
+<meta name="lang" content="zh">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FEY3L54XY"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7FEY3L54XY', { 'anonymize_ip': false });
+}
+</script>
+
+<meta property="og:title" content="React 18：深入了解新特性和更新" />
+<meta property="og:description" content="React 在过去十年中取得了长足的进步，经历了重大变革，使其成为当今使用最广泛的前端 UI 框架之一。
+最初，React 冗长的语法给开发人员带来了挑战。然而，React 引入了 JSX 语法，简化了组件的创建。接下来，带有 Hook 的功能组件使处理状态和生命周期函数变得更加容易，从而产生更优雅、可读和可维护的代码。随着 React 16 中服务器端渲染 (SSR) 的引入，通过允许更快的初始页面加载时间和更好的搜索引擎优化 (SEO) 来提高性能。 Next.js 和 Remix 等全栈框架使 React 变得更加易于使用，进一步提高了它的受欢迎程度。
+该库的最新版本 React 18 于 2022 年 3 月发布。在本文中，我们将深入研究其新功能，并探讨为用户和开发人员带来的好处。我们还将研究如何实现这些新功能，并讨论 React 团队为该框架的未来制定的令人兴奋的计划。
+React 18 中的新功能和更新 React 17 是一个“垫脚石”版本，作为 React 18 中引入的新功能的关键准备。虽然 React 17 中的 React 开发者 API 没有进行任何更改，但它引入了增量升级版本的方法以及运行的能力单个组件树中存在多个版本的 React。这是实现 React 18 更新功能的重要一步。让我们深入研究其中的一些关键功能和更新。
+一个新的并发渲染引擎 React 18 引入了新的“并发渲染引擎”，该引擎针对前端和服务器端渲染进行了优化。这种向并发的转变简化了在服务器端和客户端呈现 UI 的过程。因此，用户可以更快地与页面交互，即使在以数据为中心的繁重页面上也能提供更流畅的体验。其中大部分是作为增强的“”组件的一部分实现的。
+服务器端 &lt;Suspense&gt; 组件 服务器端“”组件的使用已经过优化，以方便部分服务器端渲染和水合作用。这意味着只有应用程序的“较轻”部分会在服务器上呈现并发送到客户端，从而允许立即重新加载页面。在客户端，&lt;Suspense&gt;已经集成了异步数据获取，可以完成页面较重部分的数据获取和渲染。最终结果是减少等待时间并为用户提供更流畅的体验。
+响应更快的用户界面 新的可中断渲染引擎可以根据用户与 UI 的交互来重新确定服务器端组件水合作用的优先级。用户可以在 HTML 通过浏览器事件激活之前与页面进行交互。根据用户点击的位置，React 会优先考虑组件树的该部分，从而产生更快捷、响应更灵敏的 UI。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/zh/posts/react-version-18-new-features-and-updates/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-15T14:53:15+08:00" />
+<meta property="article:modified_time" content="2023-11-15T16:15:10+08:00" /><meta property="og:site_name" content="前端问题终结者" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React 18：深入了解新特性和更新"/>
+<meta name="twitter:description" content="React 在过去十年中取得了长足的进步，经历了重大变革，使其成为当今使用最广泛的前端 UI 框架之一。
+最初，React 冗长的语法给开发人员带来了挑战。然而，React 引入了 JSX 语法，简化了组件的创建。接下来，带有 Hook 的功能组件使处理状态和生命周期函数变得更加容易，从而产生更优雅、可读和可维护的代码。随着 React 16 中服务器端渲染 (SSR) 的引入，通过允许更快的初始页面加载时间和更好的搜索引擎优化 (SEO) 来提高性能。 Next.js 和 Remix 等全栈框架使 React 变得更加易于使用，进一步提高了它的受欢迎程度。
+该库的最新版本 React 18 于 2022 年 3 月发布。在本文中，我们将深入研究其新功能，并探讨为用户和开发人员带来的好处。我们还将研究如何实现这些新功能，并讨论 React 团队为该框架的未来制定的令人兴奋的计划。
+React 18 中的新功能和更新 React 17 是一个“垫脚石”版本，作为 React 18 中引入的新功能的关键准备。虽然 React 17 中的 React 开发者 API 没有进行任何更改，但它引入了增量升级版本的方法以及运行的能力单个组件树中存在多个版本的 React。这是实现 React 18 更新功能的重要一步。让我们深入研究其中的一些关键功能和更新。
+一个新的并发渲染引擎 React 18 引入了新的“并发渲染引擎”，该引擎针对前端和服务器端渲染进行了优化。这种向并发的转变简化了在服务器端和客户端呈现 UI 的过程。因此，用户可以更快地与页面交互，即使在以数据为中心的繁重页面上也能提供更流畅的体验。其中大部分是作为增强的“”组件的一部分实现的。
+服务器端 &lt;Suspense&gt; 组件 服务器端“”组件的使用已经过优化，以方便部分服务器端渲染和水合作用。这意味着只有应用程序的“较轻”部分会在服务器上呈现并发送到客户端，从而允许立即重新加载页面。在客户端，&lt;Suspense&gt;已经集成了异步数据获取，可以完成页面较重部分的数据获取和渲染。最终结果是减少等待时间并为用户提供更流畅的体验。
+响应更快的用户界面 新的可中断渲染引擎可以根据用户与 UI 的交互来重新确定服务器端组件水合作用的优先级。用户可以在 HTML 通过浏览器事件激活之前与页面进行交互。根据用户点击的位置，React 会优先考虑组件树的该部分，从而产生更快捷、响应更灵敏的 UI。"/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+
+
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+React 18：深入了解新特性和更新 | 前端引路人
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/logo.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                frontend-QA
+                
+            </a>
+            
+            
+                
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Search' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <a class="nav-link" href="/" title="home">
+                            主页
+                        </a>
+                        
+                    </li>
+                    
+                    
+                    
+                    
+                        
+                    
+                    
+                    
+                    <li class="nav-item navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="faffaf" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="fafa ">
+                            
+                            语言
+                            
+                        </a>
+                        <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
+                            
+                            
+                            <a class="dropdown-item text-center nav-link" href="/zh/posts/react-version-18-new-features-and-updates/">
+                                中文
+                            </a>
+                            <a class="dropdown-item text-center nav-link" href="/posts/react-version-18-new-features-and-updates/">
+                                English
+                            </a>
+                            
+                            
+                        </div>
+                    </li>
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">React 18：深入了解新特性和更新</h1>
+            <div class="text-center">
+               
+              <small>|</small>
+              Nov 15, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/post/react18.webp" alt="React 18：深入了解新特性和更新">
+          </div>
+          
+          <article class="page-content  p-2">
+          <blockquote>
+<p>React 在过去十年中取得了长足的进步，经历了重大变革，使其成为当今使用最广泛的前端 UI 框架之一。</p>
+</blockquote>
+<p>最初，React 冗长的语法给开发人员带来了挑战。然而，React 引入了 JSX 语法，简化了组件的创建。接下来，带有 Hook 的功能组件使处理状态和生命周期函数变得更加容易，从而产生更优雅、可读和可维护的代码。随着 React 16 中服务器端渲染 (SSR) 的引入，通过允许更快的初始页面加载时间和更好的搜索引擎优化 (SEO) 来提高性能。 Next.js 和 Remix 等全栈框架使 React 变得更加易于使用，进一步提高了它的受欢迎程度。</p>
+<p>该库的最新版本 React 18 于 2022 年 3 月发布。在本文中，我们将深入研究其新功能，并探讨为用户和开发人员带来的好处。我们还将研究如何实现这些新功能，并讨论 React 团队为该框架的未来制定的令人兴奋的计划。</p>
+<h2 id="react-18-中的新功能和更新">React 18 中的新功能和更新</h2>
+<p>React 17 是一个“垫脚石”版本，作为 React 18 中引入的新功能的关键准备。虽然 React 17 中的 React 开发者 API 没有进行任何更改，但它引入了增量升级版本的方法以及运行的能力单个组件树中存在多个版本的 React。这是实现 React 18 更新功能的重要一步。让我们深入研究其中的一些关键功能和更新。</p>
+<p><img src="/post/react18-features.png" alt="react18"></p>
+<h3 id="一个新的并发渲染引擎">一个新的并发渲染引擎</h3>
+<p>React 18 引入了新的“并发渲染引擎”，该引擎针对前端和服务器端渲染进行了优化。这种向并发的转变简化了在服务器端和客户端呈现 UI 的过程。因此，用户可以更快地与页面交互，即使在以数据为中心的繁重页面上也能提供更流畅的体验。其中大部分是作为增强的“<Suspense>”组件的一部分实现的。</p>
+<h3 id="服务器端-suspense-组件">服务器端 <code>&lt;Suspense&gt;</code> 组件</h3>
+<p>服务器端“<Suspense>”组件的使用已经过优化，以方便部分服务器端渲染和水合作用。这意味着只有应用程序的“较轻”部分会在服务器上呈现并发送到客户端，从而允许立即重新加载页面。在客户端，<code>&lt;Suspense&gt;</code>已经集成了异步数据获取，可以完成页面较重部分的数据获取和渲染。最终结果是减少等待时间并为用户提供更流畅的体验。</p>
+<h3 id="响应更快的用户界面">响应更快的用户界面</h3>
+<p>新的可中断渲染引擎可以根据用户与 UI 的交互来重新确定服务器端组件水合作用的优先级。用户可以在 HTML 通过浏览器事件激活之前与页面进行交互。根据用户点击的位置，React 会优先考虑组件树的该部分，从而产生更快捷、响应更灵敏的 UI。</p>
+<h3 id="选择加入升级过程">选择加入升级过程</h3>
+<p>React 18 的一个主要功能是其选择加入的升级过程。默认情况下，React 18 使用 React 17 渲染引擎。 React 团队通过在 API 中引入新的核心功能，同时仍然保持对旧功能的支持来实现这一目标。为了利用 React 18 中的新功能，开发人员必须专门使用新的 API 函数。这种方法使开发人员能够以最小的麻烦来测试他们的组件并进行升级，即使涉及到重大更改。</p>
+<h2 id="react-18-中的并发渲染">React 18 中的并发渲染</h2>
+<p>据 React 博客介绍，React 18 的渲染引擎被设计为无缝的，使开发人员能够专注于他们的应用程序代码，而不必担心渲染过程。</p>
+<p>在大多数情况下，更改是在渲染引擎本身内进行的，不会影响代码，第三方库维护人员可能除外。</p>
+<p>React 中以前的渲染引擎作为单个、不间断的同步进程运行，渲染整个组件树。这意味着开发人员必须等到渲染完成才能看到任何新的更改。此类更改被安排到稍后的渲染队列中。</p>
+<p>相比之下，React 18 中的渲染引擎已更新为可中断、可恢复，并且能够丢弃和替换其生成的 DOM。此更新使渲染过程更加灵活和高效。</p>
+<p>值得注意的是，React 保证了一致的渲染。实际上，这意味着如果您使用 React 而不使用需要同步的外部存储，React 将使用其并发功能处理渲染并保证一致的渲染。如果您主要使用 useState 钩子编写纯 React，则可以期望更少的等待时间并获得一致的结果。</p>
+<p>主要需要注意的是，代码库的维护者以不同的方式处理数据获取或状态管理，需要重写代码以防止不一致。考虑到这一点，React 团队选择加入 React 18，允许开发人员在完全采用新版本之前测试和升级组件。</p>
+<p>现在，让我们看一下大多数 React 开发人员可能会使用的新功能。</p>
+<h2 id="客户端-react-的-suspense-组件">客户端 React 的 <Suspense> 组件</h2>
+<p><Suspense> 组件在 React 16.6 中引入，但范围有限。它仅适用于 React.Lazy，它允许组件在等待特定包加载时暂停。然而，它最初不能用于数据获取。这个限制已在最新版本的 React 中得到解决，使得可以使用 <Suspense> 组件来获取数据。</p>
+<p>本质上，<Suspense>组件简化了异步数据获取过程和加载显示。它可以包裹在处理数据获取的组件周围，使开发人员能够在布局中显示以声明方式编码的加载器组件。</p>
+<p>下面是之前将加载器逻辑合并到组件中以显示加载代码的方法的示例：</p>
+<pre tabindex="0"><code>import React, { useState, useEffect } from &#34;react&#34;;
+import axios from &#34;axios&#34;;
+import ListUniversities from &#34;./ListUniversities&#34;;
+
+
+const AsyncComponent = () =&gt; {
+
+
+ const [loading, setLoading] = useState(true);
+ const [data, setData] = useState(null);
+
+
+ useEffect(() =&gt; {
+   const fetchData = async () =&gt; {
+     try {
+       const response = await axios.get(
+         &#34;http://universities.hipolabs.com/search?country=United+States&#34;
+       );
+       setData(response.data);
+       setLoading(false);
+     } catch (e) {
+       setLoading(false);
+       setData([]);
+     }
+   };
+   fetchData();
+ });
+ return (
+   &lt;&gt;
+     {loading ? (
+       &lt;p&gt;Loading please wait...&lt;/p&gt;
+     ) : (
+       &lt;ListUniversities list={data} /&gt;
+     )}
+   &lt;/&gt;
+ );
+};
+export default AsyncComponent;
+</code></pre><p>我们的应用程序代码将如下所示：</p>
+<pre tabindex="0"><code>import React from &#34;react&#34;;
+import &#34;./App.css&#34;;
+import AsyncComponent from &#34;./components/AsyncComponent&#34;;
+
+
+function App() {
+ return (
+   &lt;div className=&#34;App&#34;&gt;
+     &lt;h1&gt;List of American Universities&lt;/h1&gt;
+     &lt;AsyncComponent /&gt;
+   &lt;/div&gt;
+ );
+}
+export default App;
+</code></pre><p>在这个例子中，加载器的逻辑是隐藏的，在更高层（即App组件）上不可见。 AsyncComponent 在内部处理加载器的显示逻辑。</p>
+<p>下面是使用 <Suspense> 组件重写的相同 App.js：</p>
+<pre tabindex="0"><code>import React, { Suspense } from &#34;react&#34;;
+import &#34;./App.css&#34;;
+import AsyncSuspendableComponent from &#34;./components/AsyncSuspendableComponent&#34;;
+
+
+function App() {
+ return (
+   &lt;div className=&#34;App&#34;&gt;
+     &lt;h1&gt;Suspense Example: Full List of American Universities&lt;/h1&gt;
+     &lt;Suspense fallback={&lt;p&gt;Loading, please wait...&lt;/p&gt;}&gt;
+       &lt;AsyncSuspendableComponent /&gt;
+     &lt;/Suspense&gt;
+   &lt;/div&gt;
+ );
+}
+export default App;
+</code></pre><p>现在我们可以看到加载逻辑已从异步组件中删除，这提供了几个好处。</p>
+<p>首先，加载逻辑现在独立于数据获取组件。这意味着我们可以更改应用程序显示加载顺序的设计，而无需修改各个组件的代码。</p>
+<p>其次，我们可以将 <Suspense> 组件嵌套在一起，从而允许我们显示整个部分的加载程序以及带有加载程序的子组件。</p>
+<p>最后，数据获取组件的可挂起版本现在更加干净且易于维护：</p>
+<pre tabindex="0"><code>import React from &#34;react&#34;;
+import ListUniversities from &#34;./ListUniversities&#34;;
+import { fetchData } from &#34;../lib/suspense-demo-api&#34;;
+const resource = fetchData();
+
+
+const AsyncSuspendableComponent = () =&gt; {
+ const data = resource.data.read();
+ return &lt;ListUniversities list={data} /&gt;;
+};
+export default AsyncSuspendableComponent;
+</code></pre><p>请注意，此处显示的可挂起组件实现的示例被视为“临时”实现，React 团队不推荐。如果您有兴趣了解我如何实现数据获取（在这篇博文的帮助下）。</p>
+<p>相反，React 团队建议使用已经将数据获取逻辑与 Suspense 集成的框架，这样您就不必自己实现它。以下是与 React 18 兼容的数据获取框架和库的部分列表，包括 Next.js、Gatsby、Relay 和 Apollo。</p>
+<p>最后，<Suspense>最令人兴奋的功能是它支持使用相同语法的服务器端渲染，使得开发优化数据丰富页面的组件变得更加容易。我们来看看SSR如何与<Suspense>配合使用。</p>
+<h2 id="使用-suspense-进行服务器端渲染">使用 <Suspense> 进行服务器端渲染</h2>
+<p>服务器端渲染是在 React 16 中引入的，主要用于 Next.js 等大型框架。使用 SSR 的主要优点之一是改善 SEO，因为仅限客户端的 React 应用程序没有可供网络爬虫读取的 HTML。</p>
+<p>SSR 的另一个用例是通过立即发送 HTML 来更快地显示应用程序的入口点。但是，此方法最适合大多数静态的页面，以提供良好的用户体验。当SSR页面需要包含大量动态数据时，用户体验并不是最佳的。</p>
+<h3 id="react-18-之前的服务器端渲染">React 18 之前的服务器端渲染</h3>
+<p>在 Reat 18 之前，必须先完成下图所示的整个 SSR 流程，然后最终用户才能与页面进行交互。
+![React 18 之前服务器端渲染 (SSR) 如何工作的图表](<a href="https://cdn-blog.scalablepath.com/uploads/2023/03/server-side-rendering-pre-react-18.png">https://cdn-blog.scalablepath.com/uploads/2023/03/server-side-rendering-pre-react-18.png</a> ）</p>
+<p>服务器端渲染进程将获取显示所需的数据、渲染 HTML，并将其发送到客户端。</p>
+<p>在客户端，JavaScript 包将加载，服务器端 HTML 将被“水合”，这意味着所有使 UI 交互的浏览器事件处理程序都绑定到服务器端 HTML。如果页面有许多获取数据的动态组件，则初始等待时间可能会过长。</p>
+<h3 id="使用服务器端渲染进行部分渲染">使用服务器端渲染进行部分渲染</h3>
+<p>在 React 18 中，可以在服务器上使用 <Suspense> 来推迟向客户端的渲染。挂起的组件始终在客户端呈现，这意味着语法保持一致，并且 Suspense 不需要服务器端语法。 React 18 的创新之处在于，服务器向客户端发送部分渲染，允许最终用户立即查看页面的某些部分并与之交互，而加载器则在客户端获取和渲染数据时出现。</p>
+<p><img src="https://cdn-blog.scalablepath.com/uploads/2023/03/server-side-rendering-pre-react-18-1.png" alt="React 18 中服务器端渲染的部分渲染如何工作"></p>
+<p>上图说明了如何在服务器上快速加载和呈现站点标题、侧边栏和一些静态内容，然后将其发送到客户端。数据密集型部分包含在 <Suspense> 组件中，最初使用其后备属性（微调器）在服务器上呈现。然后客户端处理数据获取和最终渲染。</p>
+<p>因此，最终用户可以比 React 18 之前更立即地与 UI 进行交互。页面的静态部分已经由并发渲染引擎进行了水合，使用户能够单击链接，甚至导航离开页面，中断 <Suspense> 包装组件的渲染。</p>
+<h3 id="优先补水">优先补水</h3>
+<p>考虑一个更复杂的页面，其中有两个部分，由于存在大量交互元素，加载时间较长。例如，网站标题、侧边栏和两个内容组件都是水合的。如果用户想在 UI 仍在加载时与其进行交互，React 18 的并发渲染引擎将优先考虑用户点击的组件的水合作用。这意味着组件树比其他组件更快地变得更具交互性。</p>
+<p><img src="https://cdn-blog.scalablepath.com/uploads/2023/03/prioritized-Hydration-react-18-1.png" alt="React 18 并发渲染引擎的优先水化。">
+并发渲染引擎在内部处理组件的这种自定义水合使用，从而提供更无缝的用户体验。通过单击页面的特定区域，水合过程会被中断并重新安排，从而保证更快的加载时间和更快速的交互 UI。作为开发人员，只要使用新的 Hydration API，您就不必担心这是如何发生的。
+React 将 SSR 与 <Suspense> 组件以及客户端新的可中断水合作用功能相结合，提供了明显的优势，可以极大地增强用户体验，并有助于用户在与网页交互时获得整体积极的印象。此外，这些好处还伴随着保持良好搜索引擎优化的额外好处，使其成为“双赢”的局面。</p>
+<h2 id="react-18-中的自动批处理和转换">React 18 中的自动批处理和转换</h2>
+<p>React 18 的 <Suspense> 组件更改显着改进了最终用户与应用程序的交互。但是，React 18 还引入了其他更改，旨在进一步加快页面中的渲染和交互性，例如自动批处理和转换。这些优化侧重于客户端的状态管理，可以提高所有交互组件的性能。尤其是过渡，广泛利用了可中断并发渲染引擎。</p>
+<h2 id="自动批处理以提高性能">自动批处理以提高性能</h2>
+<p>React 18 中的自动批处理通过将所有相关状态更改分组到单个重新渲染中来提高组件状态管理的性能。例如，考虑以下计数器示例，该计数器还显示计数的数字是偶数还是奇数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">flushSync</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react-dom&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">AutoBatchedComponent</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">autoBatching</span><span class="p">,</span> <span class="nx">setAutoBatching</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">isEven</span><span class="p">,</span> <span class="nx">setIsEven</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="kd">function</span> <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">setCount</span><span class="p">((</span><span class="nx">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// Does not trigger a re-render yet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">setIsEven</span><span class="p">((</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// Does not trigger a re-render yet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// React will now do one render for 2 state changes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="kd">function</span> <span class="nx">handleClickWithFlush</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// will force a render
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">flushSync</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">setCount</span><span class="p">((</span><span class="nx">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="p">});</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// will cause another render
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">setIsEven</span><span class="p">((</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;rendering auto-batched component&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">AutoBatching</span> <span class="nx">is</span> <span class="p">{</span><span class="nx">autoBatching</span> <span class="o">?</span> <span class="s2">&#34;ON&#34;</span> <span class="o">:</span> <span class="s2">&#34;OFF&#34;</span><span class="p">}{</span><span class="s2">&#34; &#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span>  
+</span></span><span class="line"><span class="cl">         <span class="nx">setAutoBatching</span><span class="p">(</span><span class="o">!</span><span class="nx">autoBatching</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">toggle</span><span class="o">&lt;</span><span class="err">/button&gt;{&#34; &#34;}</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">autoBatching</span> <span class="o">?</span> <span class="nx">handleClick</span> <span class="o">:</span> <span class="nx">handleClickWithFlush</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">+</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;even-odd&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="nx">is</span> <span class="p">{</span><span class="nx">isEven</span> <span class="o">?</span> <span class="s2">&#34;even&#34;</span> <span class="o">:</span> <span class="s2">&#34;odd&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">AutoBatchedComponent</span><span class="p">;</span>
+</span></span></code></pre></div><p>给定示例中效果的回调将在每次渲染组件时在控制台中打印“渲染自动批处理组件”。默认情况下，React 18 使用自动批处理对状态更新进行分组并仅重新渲染组件一次，如示例所示，两次状态更新仅在控制台中打印一行。</p>
+<p>但是，在某些情况下，您可能需要在每次状态更改时重新渲染组件，就像 React 17 中的行为一样。在这种情况下，您可以使用flushSync() 来选择退出自动批处理。值得注意的是，不推荐这种行为，它只是作为临时解决方案，直到开发人员可以重写其组件以使用自动批处理。</p>
+<p>在上面的示例中，我们使用flushSync()来模拟React 17。我们在两个点击处理程序之间切换，一个使用自动批处理来更新状态变量，另一个使用flushSync()在每次状态更改后强制重新渲染。因此，在后一种情况下，每次单击“+1”按钮都会在控制台中打印两行。您可以在此处查看此示例的完整代码。</p>
+<h3 id="使用转换来确定-ui-更改的优先级">使用转换来确定 UI 更改的优先级</h3>
+<p>React 中的转换提供了一种确定 UI 更改优先级的新方法。通过转换，您可以区分 UI 的紧急更新和非紧急更新。这种差异使您能够优先处理更重要的更新，而不是不太紧急的更新。</p>
+<p>![如何在 React 上使用 Transitions 来确定 UI 更新优先级的表格。](<a href="https://cdn-blog.scalablepath.com/uploads/2023/03/react-transitions-ui-updates-priority-1-1">https://cdn-blog.scalablepath.com/uploads/2023/03/react-transitions-ui-updates-priority-1-1</a>。 .png）</p>
+<p>要利用转换，您需要使用新的钩子 useTransition()。</p>
+<p>在下面的示例代码中，useTransition() 挂钩返回一个具有两个值的数组：一个名为 isPending 的布尔变量，当发生转换时该变量设置为 true；以及一个名为 startTransition 的函数，该函数通过调用回调来启动转换功能。</p>
+<p><code>const [isPending, startTransition] = useTransition();</code></p>
+<p>放置在回调中的代码的执行优先级将低于 startTransition 函数外部进行的状态更改。这意味着未包含在 startTransition 中的状态更改将具有更高的优先级，而回调中进行的状态更改将在后台发生。</p>
+<p>使用 startTransition 创建的并发渲染结果是可以取消的。如果用户进一步进行影响渲染有效性的更改，则该渲染将被中断并丢弃。过渡的总体效果是 UI 响应更加灵敏。</p>
+<p>使用 startTransition 回调时，了解状态更改的用例至关重要。此功能主要用于在 React 18 中从一个渲染过渡到另一个渲染。回调函数必须是同步函数；否则，它将无法正常工作。</p>
+<p>下面是一个示例来帮助说明如何使用 startTransition() 回调函数：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useTransition</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">TabButton</span> <span class="nx">from</span> <span class="s2">&#34;./TabButton&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Grid</span> <span class="nx">from</span> <span class="s2">&#34;./Grid&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Transition</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">isPending</span><span class="p">,</span> <span class="nx">startTransition</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useTransition</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">selected</span><span class="p">,</span> <span class="nx">setSelected</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="nx">clickTab</span> <span class="o">=</span> <span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">setSelected</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">startTransition</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">amount</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">buttons</span> <span class="nx">to</span> <span class="nx">display</span> <span class="nx">larger</span> <span class="nx">and</span> <span class="nx">larger</span> <span class="nx">grids</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h3&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">When</span> <span class="nx">you</span> <span class="nx">click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">button</span> <span class="nx">to</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">grid</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">button</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">state</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">changes</span> <span class="nx">immediately</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">the</span> <span class="nx">grid</span> <span class="nx">may</span> <span class="nx">take</span> <span class="nx">a</span> <span class="nx">very</span> <span class="kr">long</span> <span class="nx">time</span> <span class="nx">to</span> <span class="nx">render</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">Click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="mi">500</span> <span class="nx">x</span> <span class="mi">500</span> <span class="nx">button</span> <span class="nx">then</span> <span class="nx">on</span> <span class="nx">the</span> <span class="mi">10</span> <span class="nx">x</span> <span class="mi">10</span> <span class="nx">to</span> <span class="nx">cancel</span> <span class="nx">that</span> <span class="nx">render</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;tabs&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">10</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">10</span> <span class="nx">by</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">100</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">100</span> <span class="nx">by</span> <span class="mi">100</span> <span class="p">(</span><span class="nx">slower</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">500</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">500</span> <span class="nx">by</span> <span class="mi">500</span> <span class="p">(</span><span class="nx">slowest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;rendering&#34;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">isPending</span> <span class="o">?</span> <span class="s2">&#34; rendering...&#34;</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">count</span><span class="o">=</span><span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">Transition</span><span class="p">;</span>
+</span></span></code></pre></div><p>此示例演示了两种状态的使用：一种用于处理突出显示的选项卡按钮的显示，另一种包含在 startTransition 回调中以指定要在 <Grid> 组件中呈现的行数和列数。</p>
+<p>当用户单击“100 x 100”或“500 x 500”按钮时，如果 isPending 常量为 true，则会出现“正在渲染”消息。这表示渲染正在后台进行，并且仅在渲染需要很长时间时才会出现。</p>
+<p>虽然按钮突出显示会立即更改，但网格的渲染将在稍后进行。如果用户选择“500 x 500”按钮，则可能需要很长时间来渲染。但是，如果他们在等待时选择“10 x 10”按钮，则长时间渲染将被取消。这突出了该功能如何在 React 18 的可中断/可取消并发渲染引擎中工作。</p>
+<h2 id="react-18-中的新-hooks">React 18 中的新 Hooks</h2>
+<p>React 18 引入了几个新的钩子，旨在提高 React 应用程序的性能和健壮性。除了我们已经详细讨论过的 useTransition 钩子之外，还有其他一些值得探索的钩子。</p>
+<h3 id="useid">useId</h3>
+<p>useId 挂钩生成在服务器端和客户端都稳定的唯一 ID。它设计用于需要唯一 ID 的组件，例如模仿用户操作的 UI 测试序列。但是，不建议为渲染集合创建唯一的键。有关 useID 挂钩的更多信息可以在此处找到。</p>
+<h3 id="usedeferredvalue">useDeferredValue</h3>
+<p>useDeferred 钩子具有与 useTransition 类似的功能，通常用于去抖动。与基于特定时间量的传统去抖代码不同，React 会在其他排队工作完成后立即更新该值。有关此钩子的更多信息，您可以参考此页面。</p>
+<h3 id="reactstrictmode">React.StrictMode</h3>
+<p>&lt;React.StrictMode&gt; 是一种开发工具，可帮助开发人员在过渡到安装和卸载将在可重用状态下工作的未来时测试其组件的稳健性。这是仅在开发模式下可用的功能。</p>
+<p>React 模拟组件的卸载和重新安装，以便当可重用状态可用时，您可以确信您的组件将正常运行。您可以在此处找到有关 React 18 中 StrictMode 的更多信息。</p>
+<h2 id="如何升级到-react-18">如何升级到 React 18</h2>
+<p>React 18 的发布给服务器端渲染和客户端应用程序代码的核心 API 带来了许多变化。然而，本文仅介绍了一些更突出的功能。如果您有兴趣升级到 React 18，React 博客提供了有关该主题的全面信息，包括升级指南。</p>
+<h2 id="最后的想法">最后的想法</h2>
+<p>React 18 代表了该库的一个重要里程碑，它的运作方式发生了根本性的转变。虽然这种转变可能看起来令人畏惧，但许多更新都是自动发生的优化，无需更改代码。</p>
+<p>但这仅仅是开始。 React 团队计划发布新版本的 <Offscreen> 组件，该组件将允许开发人员在后台准备 UI 屏幕，并在卸载和重新安装时保持组件的当前状态。此外，服务器组件目前正在开发中，它将把 <Suspense> 的功能与服务器端功能结合起来。</p>
+<p>作为开发人员，我们可以期待 React 和第三方库在未来几年推出的许多新功能。尽管有些变化乍一看似乎难以理解，但我们可以相信 React 团队对未来的愿景。
+如果您想知道是否应该升级到 React 18，我的回答是肯定的。这不仅仅是一个主要版本，而且是一个游戏规则改变者，React 团队做了很多工作来使过渡尽可能顺利。通过现在升级，您可以利用 React 团队未来正在开发的新功能。</p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#react-18-中的新功能和更新">React 18 中的新功能和更新</a>
+      <ul>
+        <li><a href="#一个新的并发渲染引擎">一个新的并发渲染引擎</a></li>
+        <li><a href="#服务器端-suspense-组件">服务器端 <code>&lt;Suspense&gt;</code> 组件</a></li>
+        <li><a href="#响应更快的用户界面">响应更快的用户界面</a></li>
+        <li><a href="#选择加入升级过程">选择加入升级过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#react-18-中的并发渲染">React 18 中的并发渲染</a></li>
+    <li><a href="#客户端-react-的-suspense-组件">客户端 React 的 <Suspense> 组件</a></li>
+    <li><a href="#使用-suspense-进行服务器端渲染">使用 <Suspense> 进行服务器端渲染</a>
+      <ul>
+        <li><a href="#react-18-之前的服务器端渲染">React 18 之前的服务器端渲染</a></li>
+        <li><a href="#使用服务器端渲染进行部分渲染">使用服务器端渲染进行部分渲染</a></li>
+        <li><a href="#优先补水">优先补水</a></li>
+      </ul>
+    </li>
+    <li><a href="#react-18-中的自动批处理和转换">React 18 中的自动批处理和转换</a></li>
+    <li><a href="#自动批处理以提高性能">自动批处理以提高性能</a>
+      <ul>
+        <li><a href="#使用转换来确定-ui-更改的优先级">使用转换来确定 UI 更改的优先级</a></li>
+      </ul>
+    </li>
+    <li><a href="#react-18-中的新-hooks">React 18 中的新 Hooks</a>
+      <ul>
+        <li><a href="#useid">useId</a></li>
+        <li><a href="#usedeferredvalue">useDeferredValue</a></li>
+        <li><a href="#reactstrictmode">React.StrictMode</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何升级到-react-18">如何升级到 React 18</a></li>
+    <li><a href="#最后的想法">最后的想法</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="tags/react18" target="_blank">React18</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=React%2018%ef%bc%9a%e6%b7%b1%e5%85%a5%e4%ba%86%e8%a7%a3%e6%96%b0%e7%89%b9%e6%80%a7%e5%92%8c%e6%9b%b4%e6%96%b0&url=%2fzh%2fposts%2freact-version-18-new-features-and-updates%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=React%2018%ef%bc%9a%e6%b7%b1%e5%85%a5%e4%ba%86%e8%a7%a3%e6%96%b0%e7%89%b9%e6%80%a7%e5%92%8c%e6%9b%b4%e6%96%b0: %2fzh%2fposts%2freact-version-18-new-features-and-updates%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=React%2018%ef%bc%9a%e6%b7%b1%e5%85%a5%e4%ba%86%e8%a7%a3%e6%96%b0%e7%89%b9%e6%80%a7%e5%92%8c%e6%9b%b4%e6%96%b0&amp;body=Check%20out%20this%20site %2fzh%2fposts%2freact-version-18-new-features-and-updates%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+    
+
+    <div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                frontend-qa
+                <span class="text-danger">
+                    &#10084;
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

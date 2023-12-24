@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/favicon2.ico type="image/gif">
+
+
+<meta name="lang" content="en">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FEY3L54XY"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7FEY3L54XY', { 'anonymize_ip': false });
+}
+</script>
+
+<meta property="og:title" content="React version 18: new features and updates" />
+<meta property="og:description" content="React has come a long way in the past decade, undergoing significant transformations that have made it one of the most widely used front-end UI frameworks available today.
+Initially, React’s verbose syntax made it challenging for developers to work with. However, React introduced the JSX syntax, simplifying the creation of components. To follow, functional components with Hooks made it easier to handle state and life-cycle functions, leading to more elegant, readable, and maintainable code." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/react-version-18-new-features-and-updates/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-15T14:53:15+08:00" />
+<meta property="article:modified_time" content="2023-11-15T16:15:10+08:00" /><meta property="og:site_name" content="It is All about FrontEnd" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="React version 18: new features and updates"/>
+<meta name="twitter:description" content="React has come a long way in the past decade, undergoing significant transformations that have made it one of the most widely used front-end UI frameworks available today.
+Initially, React’s verbose syntax made it challenging for developers to work with. However, React introduced the JSX syntax, simplifying the creation of components. To follow, functional components with Hooks made it easier to handle state and life-cycle functions, leading to more elegant, readable, and maintainable code."/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+
+
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+React version 18: new features and updates | It is All about FrontEnd
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/logo.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                frontend-QA
+                
+            </a>
+            
+            
+                
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Search' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <a class="nav-link" href="/" title="home">
+                            Home
+                        </a>
+                        
+                    </li>
+                    
+                    
+                    
+                    
+                        
+                    
+                    
+                    
+                    <li class="nav-item navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="faffaf" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="fafa ">
+                            
+                            Language
+                            
+                        </a>
+                        <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
+                            
+                            
+                            <a class="dropdown-item text-center nav-link" href="/zh/posts/react-version-18-new-features-and-updates/">
+                                中文
+                            </a>
+                            <a class="dropdown-item text-center nav-link" href="/posts/react-version-18-new-features-and-updates/">
+                                English
+                            </a>
+                            
+                            
+                        </div>
+                    </li>
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">React version 18: new features and updates</h1>
+            <div class="text-center">
+               
+              <small>|</small>
+              Nov 15, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/post/react18.webp" alt="React version 18: new features and updates">
+          </div>
+          
+          <article class="page-content  p-2">
+          <blockquote>
+<p>React has come a long way in the past decade, undergoing significant transformations that have made it one of the most widely used front-end UI frameworks available today.</p>
+</blockquote>
+<p>Initially, React’s verbose syntax made it challenging for developers to work with. However, React introduced the JSX syntax, simplifying the creation of components. To follow, functional components with Hooks made it easier to handle state and life-cycle functions, leading to more elegant, readable, and maintainable code. With the introduction of server-side rendering (SSR) in React 16, performance improved by allowing faster initial page load times and better search engine optimization (SEO). And full-stack frameworks like Next.js and Remix have made React even more accessible, further increasing its popularity.</p>
+<p>The latest version of the library, React 18, was released in March 2022. In this article, we’ll delve into its new features and explore the benefits for both users and developers. We’ll also look at how to implement these new features and discuss the exciting plans that the React team has in store for the framework’s future.</p>
+<h2 id="new-features-and-updates-in-react-18">New Features and Updates in React 18</h2>
+<p>React 17 was a “stepping stone” release, serving as a key preparation for the new features introduced in React 18. While no changes were made to the React developer API in React 17, it introduced ways to incrementally upgrade versions and the ability to run multiple versions of React within a single component tree. This was an important step toward the implementation of the updated features in React 18. Let’s dig into some of these key features and updates.</p>
+<p><img src="/post/react18-features.png" alt="react18"></p>
+<h3 id="a-new-concurrent-rendering-engine">A New Concurrent Rendering Engine</h3>
+<p>React 18 introduced a new <code>concurrent rendering engine</code>, which has been optimized for both front-end and server-side rendering. This shift to concurrency streamlines the process of rendering the UI both on the server and the client side. As a result, users can interact with the page sooner, providing a smoother experience even on heavy data-centric pages. Much of this is implemented as part of the enhanced <code>&lt;Suspense&gt; </code>component.</p>
+<h3 id="server-side-suspense-components">Server Side <code>&lt;Suspense&gt;</code> Components</h3>
+<p>The use of server-side <code>&lt;Suspense&gt;</code> components has been optimized to facilitate partial server-side rendering and hydration. This means that only the “lighter” parts of the app are rendered on the server and sent to the client, allowing for an immediate page reload. On the client side, <code>&lt;Suspense&gt;</code>has been integrated with asynchronous data fetching, enabling the completion of data fetching and rendering of the heavier portions of the page. The end result is a reduction in waiting time and a smoother experience for users.</p>
+<h3 id="a-more-responsive-ui">A More Responsive UI</h3>
+<p>The new interruptible rendering engine enables re-prioritization of the hydration of server-side components based on user interactions with the UI. Users can interact with the page before the HTML becomes activated with browser events. Depending on where a user clicks, React prioritizes that portion of the component tree, resulting in a snappier and more responsive UI.</p>
+<h3 id="an-opt-in-upgrade-process">An Opt-in Upgrade Process</h3>
+<p>A top feature of React 18 is its opt-in upgrading process. By default, React 18 uses the React 17 rendering engine. The React team has accomplished this by introducing new core functions in their API, while still maintaining support for the old ones. To take advantage of the new features in React 18, developers must specifically use the new API functions. This approach enables developers to test their components and upgrade with minimal hassle, even if there are breaking changes involved.</p>
+<h2 id="concurrent-rendering-in-react-18">Concurrent Rendering in React 18</h2>
+<p>According to the React Blog, React 18’s rendering engine is designed to be seamless, allowing developers to focus on their application code without worrying about the rendering process.</p>
+<p>In most cases, the changes are made within the rendering engine itself and shouldn’t affect the code, with the possible exception of third-party library maintainers.</p>
+<p>The previous rendering engine in React operated as a single, uninterrupted, synchronous process that rendered the entire component tree. This meant that developers had to wait until the render was completed before any new changes could be seen. Such changes were scheduled into later render queues.</p>
+<p>In contrast, the rendering engine in React 18 has been updated to be interruptible, resumable, and capable of discarding and replacing its resulting DOM. This update enables a more flexible and efficient rendering process.</p>
+<p>It’s important to note that React guarantees a consistent render. In practical terms, this means that if you use React without using external stores that require synchronization, React will handle rendering using its concurrent capabilities and guarantee consistent rendering. If you primarily write pure React using the useState hook, you can expect less waiting times with consistent results.</p>
+<p>The main caveat is that maintainers of code libraries handle data fetching or state management differently, requiring a code rewrite to prevent inconsistencies. With this in mind, the React team made React 18 opt-in, allowing developers to test and upgrade components before fully adopting the new version.</p>
+<p>Now, let’s take a look at the new features that most React developers will likely use.</p>
+<h2 id="reacts-suspense-component-on-the-client-side">React’s <Suspense> Component on the Client Side</h2>
+<p>The <Suspense> component was introduced in React 16.6, but had a limited scope. It only worked with React.Lazy, which allowed components to be suspended while waiting for a specific bundle to load. However, it couldn’t be used for data fetching initially. This limitation has been addressed in the latest version of React, making it possible to use the <Suspense> component for data fetching.</p>
+<p>In essence, the <Suspense> component simplifies the asynchronous data fetching process and loading display. It can be wrapped around a component that handles the data fetching, enabling developers to display a loader component coded in a declarative way in their layout.</p>
+<p>Here’s an example of the previous method of incorporating loader logic within a component to display loading code:</p>
+<pre tabindex="0"><code>import React, { useState, useEffect } from &#34;react&#34;;
+import axios from &#34;axios&#34;;
+import ListUniversities from &#34;./ListUniversities&#34;;
+
+
+const AsyncComponent = () =&gt; {
+
+
+ const [loading, setLoading] = useState(true);
+ const [data, setData] = useState(null);
+
+
+ useEffect(() =&gt; {
+   const fetchData = async () =&gt; {
+     try {
+       const response = await axios.get(
+         &#34;http://universities.hipolabs.com/search?country=United+States&#34;
+       );
+       setData(response.data);
+       setLoading(false);
+     } catch (e) {
+       setLoading(false);
+       setData([]);
+     }
+   };
+   fetchData();
+ });
+ return (
+   &lt;&gt;
+     {loading ? (
+       &lt;p&gt;Loading please wait...&lt;/p&gt;
+     ) : (
+       &lt;ListUniversities list={data} /&gt;
+     )}
+   &lt;/&gt;
+ );
+};
+export default AsyncComponent;
+</code></pre><p>Our App code will look like this:</p>
+<pre tabindex="0"><code>import React from &#34;react&#34;;
+import &#34;./App.css&#34;;
+import AsyncComponent from &#34;./components/AsyncComponent&#34;;
+
+
+function App() {
+ return (
+   &lt;div className=&#34;App&#34;&gt;
+     &lt;h1&gt;List of American Universities&lt;/h1&gt;
+     &lt;AsyncComponent /&gt;
+   &lt;/div&gt;
+ );
+}
+export default App;
+</code></pre><p>In this example, the logic of the loader is hidden and not visible at the higher level, which is the App component. The AsyncComponent handles the display logic for the loader internally.</p>
+<p>Here’s the same App.js rewritten to use the <Suspense> component:</p>
+<pre tabindex="0"><code>import React, { Suspense } from &#34;react&#34;;
+import &#34;./App.css&#34;;
+import AsyncSuspendableComponent from &#34;./components/AsyncSuspendableComponent&#34;;
+
+
+function App() {
+ return (
+   &lt;div className=&#34;App&#34;&gt;
+     &lt;h1&gt;Suspense Example: Full List of American Universities&lt;/h1&gt;
+     &lt;Suspense fallback={&lt;p&gt;Loading, please wait...&lt;/p&gt;}&gt;
+       &lt;AsyncSuspendableComponent /&gt;
+     &lt;/Suspense&gt;
+   &lt;/div&gt;
+ );
+}
+export default App;
+</code></pre><p>Now we can see the loading logic has been removed from within the Async component, which offers several benefits.</p>
+<p>Firstly, the loading logic is now independent of the data fetching component. This means that we can change the design of how an app displays loading sequences without having to modify the code of individual components.</p>
+<p>Secondly, we can nest <Suspense> components within each other, allowing us to show a loader for an entire section, as well as for subcomponents with loaders.</p>
+<p>Lastly, the suspendable version of the data fetching component is now much cleaner and easier to maintain:</p>
+<pre tabindex="0"><code>import React from &#34;react&#34;;
+import ListUniversities from &#34;./ListUniversities&#34;;
+import { fetchData } from &#34;../lib/suspense-demo-api&#34;;
+const resource = fetchData();
+
+
+const AsyncSuspendableComponent = () =&gt; {
+ const data = resource.data.read();
+ return &lt;ListUniversities list={data} /&gt;;
+};
+export default AsyncSuspendableComponent;
+</code></pre><p>Please note that the example of a suspendable component implementation shown here is considered an “ad-hoc” implementation and is not recommended by the React team. If you’re interested in seeing how I implemented the data fetching (with help from this blog post).</p>
+<p>Instead, the React Team recommends using frameworks that have already integrated the logic for data fetching with Suspense so you don’t have to implement it yourself. Here’s a partial list of React 18-compatible data-fetching frameworks and libraries, including Next.js, Gatsby, Relay and Apollo.</p>
+<p>Lastly, the most exciting feature of <Suspense> is that it supports server-side rendering with the same syntax, making it easier to develop components that optimize data-rich pages. Let’s take a look at how SSR works with <Suspense>.</p>
+<h2 id="server-side-rendering-with-suspense">Server-side Rendering with <Suspense></h2>
+<p>Server-side rendering was introduced in React 16 and has primarily been used in larger frameworks like Next.js. One of the main advantages of using SSR was to improve SEO since client-side-only React apps don’t have HTML that can be read by web crawlers.</p>
+<p>Another use case for SSR is providing a faster display of the app’s entry point by sending the HTML immediately. However, this method works best for pages that are mostly static to provide a good user experience. When an SSR page needs to include a lot of dynamic data, the user experience is not optimal.</p>
+<h3 id="server-side-rendering-before-react-18">Server-side Rendering Before React 18</h3>
+<p>Before Reat 18, the entire SSR process (shown in the graphic) below had to be completed before the end user could interact with the page.
+<img src="https://cdn-blog.scalablepath.com/uploads/2023/03/server-side-rendering-pre-react-18.png" alt="A diagram of How Server-Side Rendering (SSR) worked before React 18"></p>
+<p>The server-side rendering process would fetch the necessary data for display, render the HTML, and send it to the client.</p>
+<p>On the client side, the JavaScript bundles would load, and the server-side HTML would be “hydrated,” meaning that all the browser event handlers that make the UI interactive are bound to the server-side HTML. If the page had many dynamic components that fetched data, the initial wait times could be excessive.</p>
+<h3 id="partial-renders-with-server-side-rendering">Partial Renders with Server-side Rendering</h3>
+<p>With React 18,  <Suspense> can be used on the server to defer rendering to the client. Suspended components are always rendered on the client side, meaning that the syntax remains consistent, and there’s no server-side syntax needed for Suspense. The innovation in React 18 is that the server sends a partial render to the client, allowing the end user to see and interact with certain sections of the page immediately, while loaders appear while the client-side fetches and renders data.</p>
+<p><img src="https://cdn-blog.scalablepath.com/uploads/2023/03/server-side-rendering-pre-react-18-1.png" alt="How partial renders with server-side rendering works in React 18"></p>
+<p>The graphic above illustrates how a site header, sidebar, and some static content are quickly loaded and rendered on the server and sent to the client. The data-intensive section, wrapped in a <Suspense> component, is initially rendered on the server using its fallback prop (the spinner). The client then handles data fetching and final rendering.</p>
+<p>As a result, end users can interact with the UI more immediately than was previously possible before React 18. The static portions of the page are already hydrated by the concurrent rendering engine, enabling users to click on links and even navigate away from the page, interrupting the render of the <Suspense> wrapped component.</p>
+<h3 id="prioritized-hydration">Prioritized Hydration</h3>
+<p>Consider a more complex page with two sections that take longer to load because of a large number of interactive elements. For instance, a site header, sidebar, and two content components that are all hydrating. If the user wants to interact with the UI while it’s still loading, React 18’s concurrent rendering engine will prioritize the hydration of the component the user clicks on. This means that the component tree becomes more interactive sooner than other components.</p>
+<p><img src="https://cdn-blog.scalablepath.com/uploads/2023/03/prioritized-hydration-react-18-1.png" alt="Prioritized Hydration with React 18âs concurrent rendering engine."></p>
+<p>The concurrent rendering engine handles this selective hydration of components internally by, allowing for a more seamless user experience. By clicking on a specific region of the page, the hydration process is interrupted and rescheduled, ensuring a faster load time and a more quickly interactive UI. As a developer, you don’t have to worry about how this happens as long as you are using the new hydration API.</p>
+<p>React’s combination of SSR with the <Suspense> component and the new interruptible hydration feature on the client-side offers clear advantages that greatly enhance the user experience and contribute to the overall positive impression users have when interacting with your web page. Additionally, these benefits come with the added bonus of maintaining good SEO, making it a “win-win” situation.</p>
+<h2 id="automatic-batching-and-transitions-in-react-18">Automatic Batching and Transitions in React 18</h2>
+<p>React 18’s <Suspense> component changes provide a significant improvement in the end user’s interaction with your app. However, React 18 also introduces other changes that are designed to further speed up rendering and interactivity in your pages, such as automatic batching and transitions. These optimizations focus on state management on the client side and can improve the performance of all interactive components. Transitions, in particular, leverage the interruptible concurrent rendering engine extensively.</p>
+<h2 id="automatic-batching-for-improved-performance">Automatic Batching for Improved Performance</h2>
+<p>Automatic batching in React 18 improves the performance of component state management by grouping all relevant state changes in a single re-render. For example, consider the following example of a counter that also displays if the counted number is even or odd:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">useState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">flushSync</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react-dom&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">AutoBatchedComponent</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">autoBatching</span><span class="p">,</span> <span class="nx">setAutoBatching</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">isEven</span><span class="p">,</span> <span class="nx">setIsEven</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="kd">function</span> <span class="nx">handleClick</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">setCount</span><span class="p">((</span><span class="nx">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// Does not trigger a re-render yet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">setIsEven</span><span class="p">((</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// Does not trigger a re-render yet
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// React will now do one render for 2 state changes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="kd">function</span> <span class="nx">handleClickWithFlush</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// will force a render
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">flushSync</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nx">setCount</span><span class="p">((</span><span class="nx">c</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">c</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="p">});</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// will cause another render
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="nx">setIsEven</span><span class="p">((</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;rendering auto-batched component&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">AutoBatching</span> <span class="nx">is</span> <span class="p">{</span><span class="nx">autoBatching</span> <span class="o">?</span> <span class="s2">&#34;ON&#34;</span> <span class="o">:</span> <span class="s2">&#34;OFF&#34;</span><span class="p">}{</span><span class="s2">&#34; &#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span>  
+</span></span><span class="line"><span class="cl">         <span class="nx">setAutoBatching</span><span class="p">(</span><span class="o">!</span><span class="nx">autoBatching</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">toggle</span><span class="o">&lt;</span><span class="err">/button&gt;{&#34; &#34;}</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">autoBatching</span> <span class="o">?</span> <span class="nx">handleClick</span> <span class="o">:</span> <span class="nx">handleClickWithFlush</span><span class="p">}</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">+</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/button&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;even-odd&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="nx">is</span> <span class="p">{</span><span class="nx">isEven</span> <span class="o">?</span> <span class="s2">&#34;even&#34;</span> <span class="o">:</span> <span class="s2">&#34;odd&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">AutoBatchedComponent</span><span class="p">;</span>
+</span></span></code></pre></div><p>The effect’s callback in the given example will print “rendering auto-batched component” in the console each time it renders the component. By default, React 18 uses automatic batching to group state updates and re-render the component only once, as seen in the example where two state updates produce only one line printed in the console.</p>
+<p>However, there may be scenarios where you need to re-render the component with every state change, as was the behavior in React 17. In such cases, you can use flushSync() to opt out of automatic batching. It’s worth noting that this behavior is not recommended, and it is only intended as a temporary solution until developers can rewrite their components to work with automatic batching.</p>
+<p>In the above example, we use flushSync()to simulate React 17. We switch between two click handlers, one that uses automatic batching to update state variables, and one that uses flushSync() to force a re-render after each state change. As a result, in the latter case, two lines are printed in the console with each click on the “+1” button. You can check out the full code for this example here.</p>
+<h3 id="using-transitions-to-prioritize-ui-changes">Using Transitions to Prioritize UI Changes</h3>
+<p>Transitions in React offer a new way to prioritize UI changes. With transitions, you can distinguish between urgent and non-urgent updates to the UI. This differentiation allows you to prioritize the more critical updates over less urgent ones.</p>
+<p><img src="https://cdn-blog.scalablepath.com/uploads/2023/03/react-transitions-ui-updates-priority-1-1.png" alt="A Table of How to use Transitions on React to prioritize UI updates."></p>
+<p>To take advantage of transitions, you need to use the new hook useTransition().</p>
+<p>In the example code below, the useTransition() hook returns an array with two values: a boolean variable named isPending, which is set to true when a transition is taking place, and a function named startTransition, which initiates the transition by calling a callback function.</p>
+<p><code>const [isPending, startTransition] = useTransition();</code></p>
+<p>The code placed within the callback will be executed at a lower priority than state changes made outside of the startTransition function. This means that state changes not wrapped within the startTransition will have higher priority, while the state changes made within the callback will occur in the background.</p>
+<p>The resulting concurrent render created with startTransitionis cancellable. If the user further makes changes that affect the validity of the render, that render will be interrupted and discarded. The overall effect of transitions is a more responsive UI.</p>
+<p>It’s essential to understand the use case for state changes when using startTransition callback. This feature is primarily intended for transitioning from one render to another in React 18. The callback function must be a synchronous function; otherwise, it won’t work correctly.</p>
+<p>Here’s an example to help illustrate how to use the startTransition() callback function:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useTransition</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">TabButton</span> <span class="nx">from</span> <span class="s2">&#34;./TabButton&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">Grid</span> <span class="nx">from</span> <span class="s2">&#34;./Grid&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Transition</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">isPending</span><span class="p">,</span> <span class="nx">startTransition</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useTransition</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">selected</span><span class="p">,</span> <span class="nx">setSelected</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="kr">const</span> <span class="nx">clickTab</span> <span class="o">=</span> <span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">setSelected</span><span class="p">(</span><span class="nx">amount</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">startTransition</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">amount</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="nx">click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">buttons</span> <span class="nx">to</span> <span class="nx">display</span> <span class="nx">larger</span> <span class="nx">and</span> <span class="nx">larger</span> <span class="nx">grids</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h3&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">When</span> <span class="nx">you</span> <span class="nx">click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="nx">button</span> <span class="nx">to</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">grid</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">button</span><span class="err">&#39;</span><span class="nx">s</span> <span class="nx">state</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">changes</span> <span class="nx">immediately</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">the</span> <span class="nx">grid</span> <span class="nx">may</span> <span class="nx">take</span> <span class="nx">a</span> <span class="nx">very</span> <span class="kr">long</span> <span class="nx">time</span> <span class="nx">to</span> <span class="nx">render</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">Click</span> <span class="nx">on</span> <span class="nx">the</span> <span class="mi">500</span> <span class="nx">x</span> <span class="mi">500</span> <span class="nx">button</span> <span class="nx">then</span> <span class="nx">on</span> <span class="nx">the</span> <span class="mi">10</span> <span class="nx">x</span> <span class="mi">10</span> <span class="nx">to</span> <span class="nx">cancel</span> <span class="nx">that</span> <span class="nx">render</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;tabs&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">10</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">10</span> <span class="nx">by</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">100</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">100</span> <span class="nx">by</span> <span class="mi">100</span> <span class="p">(</span><span class="nx">slower</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">TabButton</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">isActive</span><span class="o">=</span><span class="p">{</span><span class="nx">selected</span> <span class="o">===</span> <span class="mi">500</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">         <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="nx">clickTab</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">         <span class="p">}}</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">500</span> <span class="nx">by</span> <span class="mi">500</span> <span class="p">(</span><span class="nx">slowest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="err">/TabButton&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&#34;rendering&#34;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">isPending</span> <span class="o">?</span> <span class="s2">&#34; rendering...&#34;</span> <span class="o">:</span> <span class="s2">&#34;&#34;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">count</span><span class="o">=</span><span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="o">/&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">Transition</span><span class="p">;</span>
+</span></span></code></pre></div><p>This example demonstrates the use of two states: one to handle the display of the highlighted tab button, and the other wrapped within a startTransition callback to specify the number of rows and columns to render in the <Grid> component.</p>
+<p>When a user clicks on the “100 x 100” or “500 x 500” buttons, a “rendering” message appears if the isPending constant is true. This indicates that a render is taking place in the background and will only appear if the render takes a long time.</p>
+<p>While the button highlight change is immediate, the rendering of the Grid will take place later. If the user selects the “500 x 500” button, it may take a long time to render. However, if they select the “10 x 10” button while waiting, the long render will be canceled. This highlights how the feature works within React 18’s interruptible/cancelable concurrent rendering engine.</p>
+<h2 id="new-hooks-in-react-18">New Hooks in React 18</h2>
+<p>React 18 introduces several new hooks that aim to improve the performance and robustness of React applications. In addition to the useTransition hook, which we’ve already discussed in detail, there are a few others that are worth exploring.</p>
+<h3 id="useid">useId</h3>
+<p>The useId hook generates unique IDs that are stable across the server and client sides. It’s designed to be used with components that require unique IDs, such as UI testing sequences that mimic user actions. However, it’s not recommended to create unique keys for rendering collections. More information on the useID hook can be found here.</p>
+<h3 id="usedeferredvalue">useDeferredValue</h3>
+<p>The useDeferred hook has a similar function to useTransition and is commonly used for debouncing. Unlike traditional debouncing code, which is based on a specific amount of time, React updates the value as soon as the other queued-up work is completed. For more information on this hook, you can refer to this page.</p>
+<h3 id="reactstrictmode">React.StrictMode</h3>
+<p>&lt;React.StrictMode&gt; is a development tool that helps developers test the robustness of their components as they transition to a future where mounting and unmounting will work with reusable state. This is a feature only available in development mode.</p>
+<p>React simulates the unmounting and remounting of components so that when the reusable state becomes available, you can be confident that your components will function correctly. You can find more information about StrictMode in React 18 here.</p>
+<h2 id="how-to-upgrade-to-react-18">How to Upgrade to React 18</h2>
+<p>The release of React 18 brings about numerous changes to the core API for both server-side rendering and client-side application code. However, this article has only covered some of the more prominent features. If you’re interested in upgrading to React 18, the React Blog provides comprehensive information on the subject, including an Upgrade Guide.</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>React 18 represents a significant milestone for the library, with a fundamental shift in how it operates. While this shift may seem daunting, many of the updates are optimizations that occur automatically, without requiring code changes.</p>
+<p>But this is just the beginning. The React team is planning to release a new version of the <Offscreen> component, which will allow developers to prepare UI screens in the background and keep the current state of the component when it is unmounted and remounted. Additionally, Server Components are currently under development, which will combine the features of <Suspense> with server-side capabilities.</p>
+<p>As developers, we can look forward to the many new features that React and third-party libraries will introduce in the coming years. Although some of the changes may seem challenging to understand at first, we can trust the vision that the React team has for the future.
+If you’re wondering whether you should upgrade to React 18, my answer would be a resounding yes. This isn’t just a major release, but a game-changer and the React team has done a lot of work to make the transition as smooth as possible. By upgrading now, you can take advantage of the new features that the React team is working on for the future.</p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#new-features-and-updates-in-react-18">New Features and Updates in React 18</a>
+      <ul>
+        <li><a href="#a-new-concurrent-rendering-engine">A New Concurrent Rendering Engine</a></li>
+        <li><a href="#server-side-suspense-components">Server Side <code>&lt;Suspense&gt;</code> Components</a></li>
+        <li><a href="#a-more-responsive-ui">A More Responsive UI</a></li>
+        <li><a href="#an-opt-in-upgrade-process">An Opt-in Upgrade Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#concurrent-rendering-in-react-18">Concurrent Rendering in React 18</a></li>
+    <li><a href="#reacts-suspense-component-on-the-client-side">React’s <Suspense> Component on the Client Side</a></li>
+    <li><a href="#server-side-rendering-with-suspense">Server-side Rendering with <Suspense></a>
+      <ul>
+        <li><a href="#server-side-rendering-before-react-18">Server-side Rendering Before React 18</a></li>
+        <li><a href="#partial-renders-with-server-side-rendering">Partial Renders with Server-side Rendering</a></li>
+        <li><a href="#prioritized-hydration">Prioritized Hydration</a></li>
+      </ul>
+    </li>
+    <li><a href="#automatic-batching-and-transitions-in-react-18">Automatic Batching and Transitions in React 18</a></li>
+    <li><a href="#automatic-batching-for-improved-performance">Automatic Batching for Improved Performance</a>
+      <ul>
+        <li><a href="#using-transitions-to-prioritize-ui-changes">Using Transitions to Prioritize UI Changes</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-hooks-in-react-18">New Hooks in React 18</a>
+      <ul>
+        <li><a href="#useid">useId</a></li>
+        <li><a href="#usedeferredvalue">useDeferredValue</a></li>
+        <li><a href="#reactstrictmode">React.StrictMode</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-upgrade-to-react-18">How to Upgrade to React 18</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+          <aside class="tags">
+            <h5>Tags</h5>
+            <ul class="tags-ul list-unstyled list-inline">
+              
+              <li class="list-inline-item"><a href="tags/react18" target="_blank">React18</a></li>
+              
+            </ul>
+          </aside>
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=React%20version%2018%3a%20new%20features%20and%20updates&url=%2fposts%2freact-version-18-new-features-and-updates%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=React%20version%2018%3a%20new%20features%20and%20updates: %2fposts%2freact-version-18-new-features-and-updates%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=React%20version%2018%3a%20new%20features%20and%20updates&amp;body=Check%20out%20this%20site %2fposts%2freact-version-18-new-features-and-updates%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+    
+
+    <div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                frontend-qa
+                <span class="text-danger">
+                    &#10084;
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

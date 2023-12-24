@@ -2,47 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/zh/tags/emoji-support/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
+    <loc>/zh/posts/roadmap-dev-2024/</loc>
+    <lastmod>2023-11-18T20:24:52+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/tags/emoji-support/"
+                href="/posts/roadmap-dev-2024/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/zh/tags/emoji-support/"
-                />
-  </url><url>
-    <loc>/zh/posts/emoji-support/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/posts/emoji-support/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/zh/posts/emoji-support/"
-                />
-  </url><url>
-    <loc>/zh/tags/example/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="/tags/example/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-CN"
-                href="/zh/tags/example/"
+                href="/zh/posts/roadmap-dev-2024/"
                 />
   </url><url>
     <loc>/zh/posts/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
+    <lastmod>2023-11-18T20:24:52+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -54,21 +28,112 @@
                 href="/zh/posts/"
                 />
   </url><url>
-    <loc>/zh/tags/sample/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
+    <loc>/zh/</loc>
+    <lastmod>2023-11-18T20:24:52+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/tags/sample/"
+                href="/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/zh/tags/sample/"
+                href="/zh/"
+                />
+  </url><url>
+    <loc>/zh/posts/next-10-years-make-money/</loc>
+    <lastmod>2023-11-17T15:16:52+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/next-10-years-make-money/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/next-10-years-make-money/"
+                />
+  </url><url>
+    <loc>/zh/posts/make-popular-youtube-videos-with-the-help-of-ai-tools/</loc>
+    <lastmod>2023-11-16T22:59:57+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/make-popular-youtube-videos-with-the-help-of-ai-tools/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/make-popular-youtube-videos-with-the-help-of-ai-tools/"
+                />
+  </url><url>
+    <loc>/zh/posts/passive-income-for-webdev/</loc>
+    <lastmod>2023-11-16T10:58:42+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/passive-income-for-webdev/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/passive-income-for-webdev/"
+                />
+  </url><url>
+    <loc>/zh/posts/writing-clean-react-code/</loc>
+    <lastmod>2023-11-16T10:39:51+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/writing-clean-react-code/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/writing-clean-react-code/"
+                />
+  </url><url>
+    <loc>/zh/posts/fix-cors-error/</loc>
+    <lastmod>2023-11-16T10:14:22+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/fix-cors-error/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/fix-cors-error/"
+                />
+  </url><url>
+    <loc>/zh/posts/react-version-18-new-features-and-updates/</loc>
+    <lastmod>2023-11-15T16:15:10+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/react-version-18-new-features-and-updates/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/react-version-18-new-features-and-updates/"
+                />
+  </url><url>
+    <loc>/zh/tags/react18/</loc>
+    <lastmod>2023-11-15T16:15:10+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/tags/react18/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/tags/react18/"
                 />
   </url><url>
     <loc>/zh/tags/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
+    <lastmod>2023-11-15T16:15:10+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
@@ -80,17 +145,43 @@
                 href="/zh/tags/"
                 />
   </url><url>
-    <loc>/zh/</loc>
-    <lastmod>2023-11-15T11:36:14+08:00</lastmod>
+    <loc>/zh/tags/hugo/</loc>
+    <lastmod>2023-11-15T14:48:16+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="/"
+                href="/tags/hugo/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-CN"
-                href="/zh/"
+                href="/zh/tags/hugo/"
+                />
+  </url><url>
+    <loc>/zh/tags/website-building/</loc>
+    <lastmod>2023-11-15T14:48:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/tags/website-building/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/tags/website-building/"
+                />
+  </url><url>
+    <loc>/zh/posts/how-can-beginners-learn-to-use-hugo-quickly-and-effectively/</loc>
+    <lastmod>2023-11-15T14:48:16+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="/posts/how-can-beginners-learn-to-use-hugo-quickly-and-effectively/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-CN"
+                href="/zh/posts/how-can-beginners-learn-to-use-hugo-quickly-and-effectively/"
                 />
   </url><url>
     <loc>/zh/categories/</loc>

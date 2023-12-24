@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="Accept-CH" content="DPR, Viewport-Width, Width">
+<link rel="icon" href=/favicon2.ico type="image/gif">
+
+
+<meta name="lang" content="en">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      media="print" onload="this.media='all'" />
+<noscript>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Alata&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</noscript>
+
+
+<link rel="stylesheet" href="/css/font.css" media="all">
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FEY3L54XY"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-7FEY3L54XY', { 'anonymize_ip': false });
+}
+</script>
+
+<meta property="og:title" content="How to fix CORS error &#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？" />
+<meta property="og:description" content="There are several online apps available nowadays. The majority of systems now offer some form of online user interface. These interfaces deal with the client-side presentation or how to display it to the user. The user can interact with the web apps and request information or updates from the server. The data gets saved in a database that the server may access. The client-side web application requests information from the web server, which the server responds with by retrieving it from the database." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/fix-cors-error/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-16T09:00:40+08:00" />
+<meta property="article:modified_time" content="2023-11-16T10:14:22+08:00" /><meta property="og:site_name" content="It is All about FrontEnd" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to fix CORS error &#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？"/>
+<meta name="twitter:description" content="There are several online apps available nowadays. The majority of systems now offer some form of online user interface. These interfaces deal with the client-side presentation or how to display it to the user. The user can interact with the web apps and request information or updates from the server. The data gets saved in a database that the server may access. The client-side web application requests information from the web server, which the server responds with by retrieving it from the database."/>
+
+
+<link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
+<link rel="stylesheet" href="/css/footer.css" media="all">
+
+
+<link rel="stylesheet" href="/css/theme.css" media="all">
+
+
+
+
+<style>
+    :root {
+        --text-color: #343a40;
+        --text-secondary-color: #6c757d;
+        --background-color: #eaedf0;
+        --secondary-background-color: #64ffda1a;
+        --primary-color: #007bff;
+        --secondary-color: #f8f9fa;
+
+         
+        --text-color-dark: #e4e6eb;
+        --text-secondary-color-dark: #b0b3b8;
+        --background-color-dark: #18191a;
+        --secondary-background-color-dark: #212529;
+        --primary-color-dark: #ffffff;
+        --secondary-color-dark: #212529;
+    }
+    body {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    html {
+        background-color: var(--background-color) !important;
+    }
+
+    body::-webkit-scrollbar {
+        width: .5em;
+        height: .5em;
+        background-color: var(--background-color);
+    }
+    
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px var(--background-color);
+        border-radius: 1rem;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: var(--secondary-color);
+        outline: 1px solid var(--background-color);
+    }
+
+    #search-content::-webkit-scrollbar {
+        width: .5em;
+        height: .1em;
+        background-color: var(--background-color);
+    }
+</style>
+
+<meta name="description" content="">
+<link rel="stylesheet" href="/css/single.css">
+
+
+<script defer src="/fontawesome-5/all-5.15.4.js"></script>
+
+  <title>
+How to fix CORS error &#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？ | It is All about FrontEnd
+
+  </title>
+</head>
+
+<body class="light">
+  
+  
+<script>
+    let localStorageValue = localStorage.getItem("pref-theme");
+    let mediaQuery = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    switch (localStorageValue) {
+        case "dark":
+            document.body.classList.add('dark');
+            break;
+        case "light":
+            document.body.classList.remove('dark');
+            break;
+        default:
+            if (mediaQuery) {
+                document.body.classList.add('dark');
+            }
+            break;
+    }
+</script>
+
+
+
+<header>
+    <nav class="pt-3 navbar navbar-expand-lg animate">
+        <div class="container-fluid mx-xs-2 mx-sm-5 mx-md-5 mx-lg-5">
+            
+            <a class="navbar-brand primary-font text-wrap" href="/">
+                
+                <img src="/logo.png" width="30" height="30"
+                    class="d-inline-block align-top">
+                frontend-QA
+                
+            </a>
+            
+            
+                
+            
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
+                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                </svg>
+            </button>
+
+            
+            <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    
+                        <li class="nav-item navbar-text d-block d-md-none">
+                            <div class="nav-link">
+                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='Search' aria-label="Search" oninput="searchOnChange(event)">
+                            </div>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <a class="nav-link" href="/" title="home">
+                            Home
+                        </a>
+                        
+                    </li>
+                    
+                    
+                    
+                    
+                        
+                    
+                    
+                    
+                    <li class="nav-item navbar-text dropdown">
+                        <a class="nav-link dropdown-toggle" href="faffaf" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="fafa ">
+                            
+                            Language
+                            
+                        </a>
+                        <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
+                            
+                            
+                            <a class="dropdown-item text-center nav-link" href="/zh/posts/fix-cors-error/">
+                                中文
+                            </a>
+                            <a class="dropdown-item text-center nav-link" href="/posts/fix-cors-error/">
+                                English
+                            </a>
+                            
+                            
+                        </div>
+                    </li>
+                    
+                    
+                    <li class="nav-item navbar-text">
+                        
+                        <div class="text-center">
+                            <button id="theme-toggle">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </li>
+                    
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="content">
+<section id="single">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <div class="pr-lg-4">
+          <div class="title mb-5">
+            <h1 class="text-center mb-4">How to fix CORS error &#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？</h1>
+            <div class="text-center">
+               
+              <small>|</small>
+              Nov 16, 2023
+
+              
+              <span id="readingTime">
+                min read
+              </span>
+              
+            </div>
+          </div>
+          
+          <div class="featured-image">
+            <img class="img-fluid mx-auto d-block" src="/post/no-access-control-allow-origin.png" alt="How to fix CORS error &#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？">
+          </div>
+          
+          <article class="page-content  p-2">
+          <p>There are several online apps available nowadays. The majority of systems now offer some form of online user interface. These interfaces deal with the client-side presentation or how to display it to the user. The user can interact with the web apps and request information or updates from the server. The data gets saved in a database that the server may access. The client-side web application requests information from the web server, which the server responds with by retrieving it from the database. Because the data or information may be sensitive, a security safeguard must be in place to ensure its integrity. CORS, or Cross-Origin Resource Sharing, is a security procedure to provide this data‘s integrity.</p>
+<p>We shall study what CORS is and how it works in general in this article. We will learn what preflight requests are and how CORS relies on them. Furthermore, we’ll go through how we can use CORS and solve the issues that arise from it in our apps.</p>
+<h2 id="what-is-the-same-origin-policy">What is the same-origin policy?</h2>
+<p>In internet security, the same-origin policy restricts the interaction of a document or script loaded from one origin with a resource loaded from another origin.</p>
+<h2 id="what-is-cors">What is CORS?</h2>
+<p>CORS stands for Cross-Origin Resource Sharing. When one domain requests resources from another, it is called a cross-domain request. Due to security concerns, we may only want a few domains (other than our own) to have access to the server’s resources. That is where CORS comes in. The CORS technique allows a server to specify resources it will load from other origins (domains, schemes, or ports) other than HTTP headers.</p>
+<p>Prior to CORS, there was no ability to call an API endpoint in a separate domain for security concerns. The Same-Origin Policy prevents this.</p>
+<h2 id="why-do-we-need-cors">Why do we need CORS?</h2>
+<p>This method stops hackers from installing malicious scripts on different websites. For instance, a hacker may call example.com through AJAX and make modifications on behalf of the signed-in user.</p>
+<p>Cross-origin access is also beneficial or even required in some other genuine circumstances, though. For instance, if our React web application calls an API backend set up on a separate domain. It won’t be possible without CORS.</p>
+<h2 id="how-does-cors-work">How does CORS work?</h2>
+<p>CORS enables the server to explicitly allow specific sources, allowing it to override the same-origin restriction. If we set up our CORS server, each response will include an additional header with the key “Access-Control-Allow-Origin.”</p>
+<h2 id="what-are-simple-requests">What are simple requests?</h2>
+<p>A simple request is one that does not begin a preflight request before sending the actual request. A simple request fits all of the following requirements:</p>
+<p>The request uses one of the permitted methods, such as GET, HEAD, or POST.
+Aside from the user-agent generated headers, the only headers that may be manually set are,
+Accept
+Accept-Language
+Content-Language
+Content-Type
+The Content-Type header can only include one of the following values:
+application/x-www-form-urlencoded
+multipart/form-data
+text/plain
+There is no event listener associated with XMLHttpRequest.upload.
+The request makes no use of a ReadableStream object.</p>
+<h2 id="what-is-a-preflight-request">What is a preflight request?</h2>
+<p>A CORS preflight request examines the server’s ability to employ particular methods and headers and the server’s knowledge of the CORS protocol.</p>
+<p>Browsers automatically generate preflight requests. Therefore, front-end developers often don’t need to write them.</p>
+<p>Using the “Access-Control-Max-Age” header, it is possible to selectively cache the preflight responses for requests made at the same URL. The browser employs a unique cache for preflight responses distinct from the browser’s standard HTTP cache.</p>
+<h2 id="credentialed-requests">Credentialed requests</h2>
+<p>CORS is also capable of making “credentialed” requests. In these requests, the server and client can communicate via cookies (which may hold essential credentials).</p>
+<p>CORS does not contain cookies on cross-origin requests by default. Including cookies in the cross-origin request can result in a vulnerability known as cross-site request forgery, or CSRF. CORS needs both the server and the client to confirm that it is okay to include cookies on requests in order to decrease the possibility of CSRF vulnerabilities.</p>
+<h2 id="the-http-response-headers-used-in-cors">The HTTP response headers used in CORS</h2>
+<p>We explained how CORS works by including additional headers with the response indicating whether the origin is on the server’s allowlist. Let’s have a look at some of the headers that CORS employs for this reason.</p>
+<h3 id="access-control-allow-origin">Access-Control-Allow-Origin</h3>
+<p>The Access-Control-Allow-Origin header defines an origin and instructs browsers to permit that origin to access server resources for requests without credentials. It may also include a wildcard <code>*</code>, which instructs the browser that any origin can access the server’s resources for requests without credentials.</p>
+<pre tabindex="0"><code>Access-Control-Allow-Origin: *
+</code></pre><p>However, we cannot use a wildcard in the Access-Control-Allow-Origin header for requests containing credentials or cookies in general. Only one origin should be provided in this situation.</p>
+<pre tabindex="0"><code>Access-Control-Allow-Origin: www.example.com
+</code></pre><h3 id="access-control-max-age">Access-Control-Max-Age</h3>
+<p>The browser can store a preflight request for a given length of time using the Access-Control-Max-Age header.</p>
+<pre tabindex="0"><code>Access-Control-Max-Age: 1800
+</code></pre><h3 id="access-control-allow-methods">Access-Control-Allow-Methods</h3>
+<p>It is used in response to a preflight request to specify the method or methods that are allowed to access the resource.</p>
+<pre tabindex="0"><code>Access-Control-Allow-Methods: GET, POST, PUT
+</code></pre><h3 id="access-control-allow-headers">Access-Control-Allow-Headers</h3>
+<p>As part of a preflight request, the Access-Control-Allow-Headers header specifies which HTTP headers the client can use during the actual request.</p>
+<pre tabindex="0"><code>Access-Control-Allow-Headers: Content-Type
+</code></pre><h2 id="how-to-fix-the-cors-errors">How to fix the CORS errors</h2>
+<p>You may have encountered the CORS error “no ‘access-control-allow-origin’ header is present on the requested site” when constructing a web application. It occurs because no headers are sent to the browser in the preflight request informing the browser if the origin is permitted to access the resource.</p>
+<p>There are several solutions to this problem.</p>
+<h3 id="fix-on-backend-sidenodejs">fix on backend side(nodejs)</h3>
+<p>To address the CORS problem, we may manually add the necessary headers to each request. We will use middleware to set these headers whenever our server receives a request for resources. Create a middleware using the code below to set the needed headers to address the CORS error.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Origin&#34;</span><span class="p">,</span> <span class="s2">&#34;*&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Methods&#34;</span><span class="p">,</span> <span class="s2">&#34;POST, GET, PUT&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>Here we have set the origin to *. It means for simple requests like GET, HEAD, or POST; the server allows all the origins to access the server’s resources.</p>
+<p>There might be a problem if the client’s browser sends a preflight request. The origin should not be a wildcard or * for handling preflight requests. Therefore, we can update the code a little to address preflight requests.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Origin&#34;</span><span class="p">,</span> <span class="s2">&#34;https://example.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Methods&#34;</span><span class="p">,</span> <span class="s2">&#34;POST, GET, PUT&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">next</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>Code language: JavaScript (javascript)
+As an alternative to middleware, we may use the app.options method over a specific endpoint to listen for preflight requests. The preflight request is an OPTIONS request (rather than a GET, POST, or PUT).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">options</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Origin&#34;</span><span class="p">,</span> <span class="s2">&#34;https://example.com&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Methods&#34;</span><span class="p">,</span> <span class="s2">&#34;POST, GET, PUT&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&#34;Access-Control-Allow-Headers&#34;</span><span class="p">,</span> <span class="s2">&#34;Content-Type&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">204</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>Additionally, you can use the <code>cors</code> NPM package.</p>
+<p>install that package:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install cors
+</span></span></code></pre></div><p>use that package in your app:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;cors&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">origin</span><span class="o">:</span> <span class="s1">&#39;https://example.com&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span></code></pre></div><h3 id="fix-on-frontend-side">fix on frontend side</h3>
+<p>If you don’t control the server your frontend code is sending a request to, and the problem with the response from that server is just the lack of the necessary Access-Control-Allow-Origin header, and you are using framework like <code>React</code>,<code>Vue</code>,<code>Angular</code> etc, you can easily get things to work—by making the request through a CORS proxy plugin.</p>
+<p>here is the vue Cli for proxy settting:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">proxy</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;^/api&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;&lt;url&gt;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ws</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">changeOrigin</span><span class="o">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;^/foo&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">target</span><span class="o">:</span> <span class="s1">&#39;&lt;other_url&gt;&#39;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>This article taught us what CORS is and how it generally works. Furthermore, we looked at what preflight requests are and how CORS relies on them. Finally, we learned how to use CORS and solve the issues arising from it in our apps.</p>
+
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3">
+        <div class="sticky-sidebar">
+          
+          <aside class="toc">
+              <h5>
+                Table Of Contents
+              </h5>
+              <div class="toc-content">
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-the-same-origin-policy">What is the same-origin policy?</a></li>
+    <li><a href="#what-is-cors">What is CORS?</a></li>
+    <li><a href="#why-do-we-need-cors">Why do we need CORS?</a></li>
+    <li><a href="#how-does-cors-work">How does CORS work?</a></li>
+    <li><a href="#what-are-simple-requests">What are simple requests?</a></li>
+    <li><a href="#what-is-a-preflight-request">What is a preflight request?</a></li>
+    <li><a href="#credentialed-requests">Credentialed requests</a></li>
+    <li><a href="#the-http-response-headers-used-in-cors">The HTTP response headers used in CORS</a>
+      <ul>
+        <li><a href="#access-control-allow-origin">Access-Control-Allow-Origin</a></li>
+        <li><a href="#access-control-max-age">Access-Control-Max-Age</a></li>
+        <li><a href="#access-control-allow-methods">Access-Control-Allow-Methods</a></li>
+        <li><a href="#access-control-allow-headers">Access-Control-Allow-Headers</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-fix-the-cors-errors">How to fix the CORS errors</a>
+      <ul>
+        <li><a href="#fix-on-backend-sidenodejs">fix on backend side(nodejs)</a></li>
+        <li><a href="#fix-on-frontend-side">fix on frontend side</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+              </div>
+          </aside>
+          
+
+          
+
+          
+          <aside class="social">
+            <h5>Social</h5>
+            <div class="social-content">
+              <ul class="list-inline">
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://twitter.com/share?text=How%20to%20fix%20CORS%20error%20%22No%20%27Access-Control-Allow-Origin%27%20header%20is%20present%20on%20the%20requested%20resource%22%ef%bc%9f&url=%2fposts%2ffix-cors-error%2f">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=How%20to%20fix%20CORS%20error%20%22No%20%27Access-Control-Allow-Origin%27%20header%20is%20present%20on%20the%20requested%20resource%22%ef%bc%9f: %2fposts%2ffix-cors-error%2f">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item text-center">
+                  <a target="_blank" href='mailto:?subject=How%20to%20fix%20CORS%20error%20%22No%20%27Access-Control-Allow-Origin%27%20header%20is%20present%20on%20the%20requested%20resource%22%ef%bc%9f&amp;body=Check%20out%20this%20site %2fposts%2ffix-cors-error%2f'>
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </aside>
+          
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-9 p-4">
+        
+      </div>
+    </div>
+  </div>
+  <button class="p-2 px-3" onclick="topFunction()" id="topScroll">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</section>
+
+
+<div class="progress">
+  <div id="scroll-progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<Script src="/js/scrollProgressBar.js"></script>
+
+
+<script>
+  var topScroll = document.getElementById("topScroll");
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      topScroll.style.display = "block";
+    } else {
+      topScroll.style.display = "none";
+    }
+  }
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+
+<script src="/js/readingTime.js"></script>
+
+
+
+  </div><footer>
+    
+    
+
+    <div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            
+            &copy; 2023  All rights reserved
+            <div class="text-secondary">
+                frontend-qa
+                <span class="text-danger">
+                    &#10084;
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div></footer><script src="/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+</script>
+
+
+    <script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  <section id="search-content" class="py-2">
+    <div class="container" id="search-results"></div>
+  </section>
+</body>
+
+</html>

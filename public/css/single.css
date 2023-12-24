@@ -2,11 +2,21 @@
     padding: 60px 0;
     line-height: 1.7em;
     font-size: 17px;
+    /* fix: 修改宽度、居中
+    todo:mobile compatibility
+    */
+    width: 1000px;
+    margin: 0 auto;
 }
 
 #single .title > h1 {
     opacity: 0.8;
-    color: var(--text-color) !important;
+    /* set the article title's color to :#141414 */
+    color: #141414;
+    font-size: 38px;
+}
+#single h2 {
+    font-size: 30px;
 }
 
 #single .title small {

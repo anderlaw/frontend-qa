@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React18 on It is All about FrontEnd</title>
+    <link>/tags/react18/</link>
+    <description>Recent content in React18 on It is All about FrontEnd</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 15 Nov 2023 14:53:15 +0800</lastBuildDate><atom:link href="/tags/react18/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React version 18: new features and updates</title>
+      <link>/posts/react-version-18-new-features-and-updates/</link>
+      <pubDate>Wed, 15 Nov 2023 14:53:15 +0800</pubDate>
+      
+      <guid>/posts/react-version-18-new-features-and-updates/</guid>
+      <description>React has come a long way in the past decade, undergoing significant transformations that have made it one of the most widely used front-end UI frameworks available today.
+Initially, React’s verbose syntax made it challenging for developers to work with. However, React introduced the JSX syntax, simplifying the creation of components. To follow, functional components with Hooks made it easier to handle state and life-cycle functions, leading to more elegant, readable, and maintainable code.</description>
+    </item>
+    
+  </channel>
+</rss>
