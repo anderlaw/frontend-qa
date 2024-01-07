@@ -68,8 +68,8 @@
                     <!-- 博客 -->
                     {{ if not (.Site.Params.navbar.disableAbout | default false) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}/posts" aria-label="about">
-                            Blog
+                        <a class="nav-link" href="/posts" aria-label="about">
+                            博客
                         </a>
                     </li>
                     {{ end }}
