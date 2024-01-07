@@ -20,8 +20,14 @@
     transform: translateY(-7px);
 }
 
+
 #list-page .card-text * {
     background-color: var(--secondary-color) !important;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
 }
 
 #list-page .post-footer {
