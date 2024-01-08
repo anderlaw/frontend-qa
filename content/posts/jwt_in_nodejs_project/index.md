@@ -4,6 +4,7 @@ date: 2024-01-07T19:16:35+08:00
 image: banner.png
 draft: false
 summary: JWT 是jsonwebtoken的简称，用于用户认证和权限鉴定。本文介绍一个名叫“jsonwebtoken”的npm包，它实现了JWT的常用的功能。
+tags: ["JWT"]
 ---
 
 `jsonwebtoken`是一个npm包，提供了关于jsonwebtoken的生成、检查方法。
