@@ -1,5 +1,5 @@
 ---
-title: "Nodejs中文件的切片与合并"
+title: "javascript中文件的切片与合并"
 date: 2024-01-08T09:26:31+08:00
 draft: false
 image: banner.jpeg
