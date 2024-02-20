@@ -1,7 +1,0 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>All 通过配置“内容安全策略”禁用eval - 前端研磨坊</title>
-        <link>/posts/disable-eval/</link>
-        <description>All 通过配置“内容安全策略”禁用eval | 前端研磨坊</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 24 Dec 2023 10:56:15 &#43;0800</lastBuildDate><atom:link href="/posts/disable-eval/" rel="self" type="application/rss+xml" /></channel>
-</rss>
