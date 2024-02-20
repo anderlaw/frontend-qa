@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>编写简洁 React 代码的 10 个最佳实践 - 前端研磨坊</title><meta name="Description" content="This is my cool site 1212"><meta property="og:title" content="编写简洁 React 代码的 10 个最佳实践" />
+<meta property="og:description" content="编写干净的 React 代码很重要，因为它反映了仔细和专注的心态。 当我们花时间编写干净、组织良好的代码时，我们就展示了对软件开发技术的承诺。 干净的代码证明我们重视工作质量，并愿意投入所需的时间和精力来创造真正卓越的东西。
+为什么组织和编写干净的 React 代码很重要？ 出于实际原因以及视觉影响，干净的代码组织在 React 中非常重要。 精心设计和组织良好的代码库可以在视觉上令人愉悦，使其更易于使用和理解。
+当代码混乱无序时，可能很难理解不同的元素如何组合在一起形成最终产品。 这可能会导致处理代码的开发人员和将与应用程序交互的最终用户感到困惑。
+同样，当代码干净且组织良好时，可以更轻松地查看不同元素之间的关系，了解它们如何组合在一起，并根据需要进行更改。
+如何编写干净的 React 代码？ 编写干净的代码对于使项目具有可读性、可扩展性和可维护性至关重要。 以下是编写干净 React 代码的十个最佳 React 技巧：
+使用有意义的组件名称 给出反映其功能的组件名称。 避免使用“Box”或“DoesTheThing”等通用名称。 有意义的名称使人们更容易理解组件的功能及其在应用程序中的用途。 清晰简洁的组件名称可以减轻开发人员的认知负担，从而更轻松地导航和维护代码库。
+当与多个开发人员一起开发项目时，清晰且有意义的组件名称可以帮助每个人理解代码并更有效地协作。 如果一个组件根据其用途来命名，将来会更容易维护、重构或修改。 此外，当您为组件指定一个有意义的名称时，它有助于在调试时轻松地在代码库中找到该组件。
+分解组件 将复杂的组件分解为更小、更易于管理的组件可以更轻松地理解和维护代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 较小的组件也更容易理解，从而更容易修复错误和添加新功能。 同样，较小的组件更容易测试，从而更容易编写有效的单元测试并确保代码质量。 分解组件可以让您分离应用程序的关注点，并有助于管理和理解代码库。 它可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。
+使用解构 解构 props 和 state 使代码更加简洁和可读。 您可以编写“const {title} = props”，而不是编写“props.title”。 它允许您以更简洁和可读的方式从对象或数组中提取值，从而减少需要编写的代码量。 解构可以通过显式声明您感兴趣的属性或元素来使代码更具可读性。
+它还可以帮助防止在访问不存在的属性或元素时出现错误。 通过分析代码的哪些部分使用了哪些值，可以更轻松地重构代码，并且可以通过仅提取所需的值来简化在组件之间传递 props 的过程。
+保持较小的组件 保持组件较小并专注于单一职责可以更轻松地测试和调试代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 它们更容易理解和维护，更容易修复错误和添加新功能。 较小的组件也更容易测试，从而更容易编写有效的单元测试并确保代码质量。 将组件分解为更小的部分可以让您分离应用程序的关注点，从而更轻松地管理和理解代码库。 较小的组件还可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。
+除了这些好处之外，保持组件较小还可以使协作变得更容易 通过降低各个组件的复杂性并允许进行更有针对性和更细致的讨论，与其他开发人员合作。
+使用prop-types 使用“prop-types”来记录和验证传递给组件的 props 类型有助于防止错误。 Prop 类型有助于确保将正确的数据类型传递到组件中，从而减少出现运行时错误的可能性。 Prop 类型充当组件的文档，明确每个组件需要什么类型的数据以及组件如何处理这些数据。 当不正确的数据类型传递到组件时，它们可以通过提供有用的错误消息来帮助识别代码问题。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/writing-clean-react-code/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-16T10:25:26+08:00" />
+<meta property="article:modified_time" content="2023-11-16T10:25:26+08:00" /><meta property="og:site_name" content="My cool site" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编写简洁 React 代码的 10 个最佳实践"/>
+<meta name="twitter:description" content="编写干净的 React 代码很重要，因为它反映了仔细和专注的心态。 当我们花时间编写干净、组织良好的代码时，我们就展示了对软件开发技术的承诺。 干净的代码证明我们重视工作质量，并愿意投入所需的时间和精力来创造真正卓越的东西。
+为什么组织和编写干净的 React 代码很重要？ 出于实际原因以及视觉影响，干净的代码组织在 React 中非常重要。 精心设计和组织良好的代码库可以在视觉上令人愉悦，使其更易于使用和理解。
+当代码混乱无序时，可能很难理解不同的元素如何组合在一起形成最终产品。 这可能会导致处理代码的开发人员和将与应用程序交互的最终用户感到困惑。
+同样，当代码干净且组织良好时，可以更轻松地查看不同元素之间的关系，了解它们如何组合在一起，并根据需要进行更改。
+如何编写干净的 React 代码？ 编写干净的代码对于使项目具有可读性、可扩展性和可维护性至关重要。 以下是编写干净 React 代码的十个最佳 React 技巧：
+使用有意义的组件名称 给出反映其功能的组件名称。 避免使用“Box”或“DoesTheThing”等通用名称。 有意义的名称使人们更容易理解组件的功能及其在应用程序中的用途。 清晰简洁的组件名称可以减轻开发人员的认知负担，从而更轻松地导航和维护代码库。
+当与多个开发人员一起开发项目时，清晰且有意义的组件名称可以帮助每个人理解代码并更有效地协作。 如果一个组件根据其用途来命名，将来会更容易维护、重构或修改。 此外，当您为组件指定一个有意义的名称时，它有助于在调试时轻松地在代码库中找到该组件。
+分解组件 将复杂的组件分解为更小、更易于管理的组件可以更轻松地理解和维护代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 较小的组件也更容易理解，从而更容易修复错误和添加新功能。 同样，较小的组件更容易测试，从而更容易编写有效的单元测试并确保代码质量。 分解组件可以让您分离应用程序的关注点，并有助于管理和理解代码库。 它可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。
+使用解构 解构 props 和 state 使代码更加简洁和可读。 您可以编写“const {title} = props”，而不是编写“props.title”。 它允许您以更简洁和可读的方式从对象或数组中提取值，从而减少需要编写的代码量。 解构可以通过显式声明您感兴趣的属性或元素来使代码更具可读性。
+它还可以帮助防止在访问不存在的属性或元素时出现错误。 通过分析代码的哪些部分使用了哪些值，可以更轻松地重构代码，并且可以通过仅提取所需的值来简化在组件之间传递 props 的过程。
+保持较小的组件 保持组件较小并专注于单一职责可以更轻松地测试和调试代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 它们更容易理解和维护，更容易修复错误和添加新功能。 较小的组件也更容易测试，从而更容易编写有效的单元测试并确保代码质量。 将组件分解为更小的部分可以让您分离应用程序的关注点，从而更轻松地管理和理解代码库。 较小的组件还可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。
+除了这些好处之外，保持组件较小还可以使协作变得更容易 通过降低各个组件的复杂性并允许进行更有针对性和更细致的讨论，与其他开发人员合作。
+使用prop-types 使用“prop-types”来记录和验证传递给组件的 props 类型有助于防止错误。 Prop 类型有助于确保将正确的数据类型传递到组件中，从而减少出现运行时错误的可能性。 Prop 类型充当组件的文档，明确每个组件需要什么类型的数据以及组件如何处理这些数据。 当不正确的数据类型传递到组件时，它们可以通过提供有用的错误消息来帮助识别代码问题。"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/posts/writing-clean-react-code/" /><link rel="prev" href="/posts/fix-cors-error/" /><link rel="next" href="/posts/nextjs-api-the-complete-guide-in-2023/" /><link rel="alternate" href="/posts/writing-clean-react-code/index.xml" type="application/rss+xml" title="前端研磨坊">
+    <link rel="feed" href="/posts/writing-clean-react-code/index.xml" type="application/rss+xml" title="前端研磨坊"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "编写简洁 React 代码的 10 个最佳实践",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/posts\/writing-clean-react-code\/"
+        },"genre": "posts","wordcount":  143 ,
+        "url": "\/posts\/writing-clean-react-code\/","datePublished": "2023-11-16T10:25:26+08:00","dateModified": "2023-11-16T10:25:26+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Author"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="前端研磨坊">前端研磨坊
+            </a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="前端研磨坊">前端研磨坊
+                </a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编写简洁 React 代码的 10 个最佳实践</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Author</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-16">2023-11-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;143 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么组织和编写干净的-react-代码很重要">为什么组织和编写干净的 React 代码很重要？</a></li>
+    <li><a href="#如何编写干净的-react-代码">如何编写干净的 React 代码？</a>
+      <ul>
+        <li><a href="#使用有意义的组件名称">使用有意义的组件名称</a></li>
+        <li><a href="#分解组件">分解组件</a></li>
+        <li><a href="#使用解构">使用解构</a></li>
+        <li><a href="#保持较小的组件">保持较小的组件</a></li>
+        <li><a href="#使用prop-types">使用prop-types</a></li>
+        <li><a href="#使用功能组件">使用功能组件</a></li>
+        <li><a href="#避免使用内联样式">避免使用内联样式</a></li>
+        <li><a href="#使用箭头函数">使用箭头函数</a></li>
+        <li><a href="#使用无状态组件">使用无状态组件</a></li>
+        <li><a href="#使用扩展运算符">使用扩展运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>编写干净的 React 代码很重要，因为它反映了仔细和专注的心态。 当我们花时间编写干净、组织良好的代码时，我们就展示了对软件开发技术的承诺。 干净的代码证明我们重视工作质量，并愿意投入所需的时间和精力来创造真正卓越的东西。</p>
+<h2 id="为什么组织和编写干净的-react-代码很重要">为什么组织和编写干净的 React 代码很重要？</h2>
+<p>出于实际原因以及视觉影响，干净的代码组织在 React 中非常重要。 精心设计和组织良好的代码库可以在视觉上令人愉悦，使其更易于使用和理解。</p>
+<p>当代码混乱无序时，可能很难理解不同的元素如何组合在一起形成最终产品。 这可能会导致处理代码的开发人员和将与应用程序交互的最终用户感到困惑。</p>
+<p>同样，当代码干净且组织良好时，可以更轻松地查看不同元素之间的关系，了解它们如何组合在一起，并根据需要进行更改。</p>
+<h2 id="如何编写干净的-react-代码">如何编写干净的 React 代码？</h2>
+<p>编写干净的代码对于使项目具有可读性、可扩展性和可维护性至关重要。 以下是编写干净 React 代码的十个最佳 React 技巧：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/React_Tips_for_writing_clean_react_code_e90add0bfe.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/React_Tips_for_writing_clean_react_code_e90add0bfe.webp, https://d2mk45aasx86xg.cloudfront.net/React_Tips_for_writing_clean_react_code_e90add0bfe.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/React_Tips_for_writing_clean_react_code_e90add0bfe.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/React_Tips_for_writing_clean_react_code_e90add0bfe.webp"
+        title="编写干净的 React 代码的 React 提示.webp" /></p>
+<h3 id="使用有意义的组件名称">使用有意义的组件名称</h3>
+<p>给出反映其功能的组件名称。 避免使用“Box”或“DoesTheThing”等通用名称。 有意义的名称使人们更容易理解组件的功能及其在应用程序中的用途。 清晰简洁的组件名称可以减轻开发人员的认知负担，从而更轻松地导航和维护代码库。</p>
+<p>当与多个开发人员一起开发项目时，清晰且有意义的组件名称可以帮助每个人理解代码并更有效地协作。 如果一个组件根据其用途来命名，将来会更容易维护、重构或修改。 此外，当您为组件指定一个有意义的名称时，它有助于在调试时轻松地在代码库中找到该组件。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/Best_Practices_for_Writing_Clean_React_Code_4daf1834e8.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/Best_Practices_for_Writing_Clean_React_Code_4daf1834e8.webp, https://d2mk45aasx86xg.cloudfront.net/Best_Practices_for_Writing_Clean_React_Code_4daf1834e8.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/Best_Practices_for_Writing_Clean_React_Code_4daf1834e8.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/Best_Practices_for_Writing_Clean_React_Code_4daf1834e8.webp"
+        title="编写干净 React 代码的最佳实践.webp" /></p>
+<h3 id="分解组件">分解组件</h3>
+<p>将复杂的组件分解为更小、更易于管理的组件可以更轻松地理解和维护代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 较小的组件也更容易理解，从而更容易修复错误和添加新功能。 同样，较小的组件更容易测试，从而更容易编写有效的单元测试并确保代码质量。 分解组件可以让您分离应用程序的关注点，并有助于管理和理解代码库。 它可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/writing_clean_React_Code_d6e3f477ab.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/writing_clean_React_Code_d6e3f477ab.webp, https://d2mk45aasx86xg.cloudfront.net/writing_clean_React_Code_d6e3f477ab.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/writing_clean_React_Code_d6e3f477ab.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/writing_clean_React_Code_d6e3f477ab.webp"
+        title="编写干净的 React Code.webp" /></p>
+<h3 id="使用解构">使用解构</h3>
+<p>解构 props 和 state 使代码更加简洁和可读。 您可以编写“const {title} = props”，而不是编写“props.title”。 它允许您以更简洁和可读的方式从对象或数组中提取值，从而减少需要编写的代码量。 解构可以通过显式声明您感兴趣的属性或元素来使代码更具可读性。</p>
+<p>它还可以帮助防止在访问不存在的属性或元素时出现错误。 通过分析代码的哪些部分使用了哪些值，可以更轻松地重构代码，并且可以通过仅提取所需的值来简化在组件之间传递 props 的过程。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/How_to_Write_Cleaner_React_Code_ae3e652825.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/How_to_Write_Cleaner_React_Code_ae3e652825.webp, https://d2mk45aasx86xg.cloudfront.net/How_to_Write_Cleaner_React_Code_ae3e652825.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/How_to_Write_Cleaner_React_Code_ae3e652825.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/How_to_Write_Cleaner_React_Code_ae3e652825.webp"
+        title="如何编写更干净的 React 代码.webp" /></p>
+<h3 id="保持较小的组件">保持较小的组件</h3>
+<p>保持组件较小并专注于单一职责可以更轻松地测试和调试代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 它们更容易理解和维护，更容易修复错误和添加新功能。 较小的组件也更容易测试，从而更容易编写有效的单元测试并确保代码质量。 将组件分解为更小的部分可以让您分离应用程序的关注点，从而更轻松地管理和理解代码库。 较小的组件还可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。</p>
+<p>除了这些好处之外，保持组件较小还可以使协作变得更容易
+通过降低各个组件的复杂性并允许进行更有针对性和更细致的讨论，与其他开发人员合作。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_Tips_ef12deed11.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_Tips_ef12deed11.webp, https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_Tips_ef12deed11.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_Tips_ef12deed11.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_Tips_ef12deed11.webp"
+        title="React 清洁代码提示.webp" /></p>
+<h3 id="使用prop-types">使用prop-types</h3>
+<p>使用“prop-types”来记录和验证传递给组件的 props 类型有助于防止错误。 Prop 类型有助于确保将正确的数据类型传递到组件中，从而减少出现运行时错误的可能性。 Prop 类型充当组件的文档，明确每个组件需要什么类型的数据以及组件如何处理这些数据。 当不正确的数据类型传递到组件时，它们可以通过提供有用的错误消息来帮助识别代码问题。</p>
+<p>使用 prop 类型可以明确每个组件需要哪些数据并减少对如何使用组件的困惑，从而有助于促进开发人员之间的协作。 使用 prop 类型可以降低运行时错误的可能性并使其更易于维护和可读，从而提高代码的整体质量。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/Writing_Clean_Code_with_React_dd7ff8b5c3.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/Writing_Clean_Code_with_React_dd7ff8b5c3.webp, https://d2mk45aasx86xg.cloudfront.net/Writing_Clean_Code_with_React_dd7ff8b5c3.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/Writing_Clean_Code_with_React_dd7ff8b5c3.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/Writing_Clean_Code_with_React_dd7ff8b5c3.webp"
+        title="使用 React.webp 编写干净的代码" /></p>
+<h3 id="使用功能组件">使用功能组件</h3>
+<p>尽可能使用函数式组件而不是类组件是明智的，因为函数式组件更易于阅读和编写。 函数组件通常比类组件更快、更高效，因为它们不需要构造函数或生命周期方法。</p>
+<p>函数组件通常比类组件更简单、更容易阅读，因为它们也没有那么多的样板代码。 功能组件通常是无状态的，这意味着它们不维护自己的状态。 这使得它们更容易推理和测试。 它们是使用 React hook 的主要方式，它提供了管理状态和副作用的强大方法。 由于功能组件通常是无状态的，并且具有一组清晰的输入和输出，因此它们通常更容易推理和调试。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_d00554a928.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_d00554a928.webp, https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_d00554a928.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_d00554a928.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/React_Clean_Code_d00554a928.webp"
+        title="React Clean Code.webp" /></p>
+<h3 id="避免使用内联样式">避免使用内联样式</h3>
+<p>使用 CSS 类而不是内联样式将表示与逻辑分开，并使维护和更新设计变得更容易。 将样式与组件逻辑分离可以改善关注点分离，从而更容易维护和修改代码。 通过将样式保存在单独的 CSS 文件中，可以更轻松地管理和维护代码库，尤其是在处理较大的应用程序时。</p>
+<p>使用外部样式表或 CSS 模块可以更轻松地跨多个组件重用样式，从而减少代码重复量。 通过分离样式，可以更轻松地启用浏览器缓存，这有助于提高应用程序的性能。 通过明确区分样式和组件逻辑，可以更轻松地调试样式或组件逻辑出现的问题。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/Important_Tips_to_Write_Clean_React_Code_15fe1ae4b6.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/Important_Tips_to_Write_Clean_React_Code_15fe1ae4b6.webp, https://d2mk45aasx86xg.cloudfront.net/Important_Tips_to_Write_Clean_React_Code_15fe1ae4b6.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/Important_Tips_to_Write_Clean_React_Code_15fe1ae4b6.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/Important_Tips_to_Write_Clean_React_Code_15fe1ae4b6.webp"
+        title="编写干净 React 代码的重要提示.webp" /></p>
+<h3 id="使用箭头函数">使用箭头函数</h3>
+<p>箭头函数使代码更加简洁，更易于阅读。 它们是用 JavaScript 编写函数的更好方法，可以生成更清晰、更易读的代码。 箭头函数自动绑定到父作用域，这在您需要访问父作用域的“this”关键字的情况下非常有用。 箭头函数无需使用 bind() 方法将“this”关键字绑定到组件的方法，这可以简化您的代码。 与传统函数相比，箭头函数可以提供更好的性能，因为它们不会创建新的词法范围。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/Clean_Code_in_React_e546322925.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/Clean_Code_in_React_e546322925.webp, https://d2mk45aasx86xg.cloudfront.net/Clean_Code_in_React_e546322925.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/Clean_Code_in_React_e546322925.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/Clean_Code_in_React_e546322925.webp"
+        title="React.webp 中的清理代码" /></p>
+<h3 id="使用无状态组件">使用无状态组件</h3>
+<p>应尽可能使用无状态组件。 有状态组件更加复杂且难以推理。 无状态组件更容易重用和组合，因为它们只需根据通过 props 传递给它们的数据进行渲染。 它们也更容易测试，因为它们没有任何内部状态需要管理。 无状态组件通常也比有状态组件更快、更高效，因为它们不必管理自己的状态。 考虑到无状态组件的内部状态管理，它们也更容易扩展，并且可以在应用程序的不同部分轻松重用。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/React_Best_Practices_0c433f936a.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/React_Best_Practices_0c433f936a.webp, https://d2mk45aasx86xg.cloudfront.net/React_Best_Practices_0c433f936a.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/React_Best_Practices_0c433f936a.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/React_Best_Practices_0c433f936a.webp"
+        title="React 最佳实践.webp" /></p>
+<h3 id="使用扩展运算符">使用扩展运算符</h3>
+<p>在 React 代码中使用扩展运算符 (&hellip;) 很重要，原因有几个，例如它允许您编写更短、更简洁的代码，尤其是在使用数组或对象时。 扩展运算符允许您创建新的
+对象或数组而不修改原始数据，这是函数式编程的一个重要原则。 它允许您轻松地将属性从一个对象复制到另一个对象，这在更新组件状态时非常有用。 扩展运算符允许您合并对象，这在处理复杂的数据结构时非常有用。 或者最聪明的是，扩展运算符也可以用于将 props 传播到子组件，从而减少需要编写的样板代码量。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://d2mk45aasx86xg.cloudfront.net/Right_Way_to_Write_React_clean_code_e5f46fe26b.webp"
+        data-srcset="https://d2mk45aasx86xg.cloudfront.net/Right_Way_to_Write_React_clean_code_e5f46fe26b.webp, https://d2mk45aasx86xg.cloudfront.net/Right_Way_to_Write_React_clean_code_e5f46fe26b.webp 1.5x, https://d2mk45aasx86xg.cloudfront.net/Right_Way_to_Write_React_clean_code_e5f46fe26b.webp 2x"
+        data-sizes="auto"
+        alt="https://d2mk45aasx86xg.cloudfront.net/Right_Way_to_Write_React_clean_code_e5f46fe26b.webp"
+        title="编写 React 干净代码的正确方法.webp" /></p>
+<h2 id="结论">结论</h2>
+<p>程序员在编写代码时必须考虑道德规范，因为他们创建的软件可能会产生重大影响。 例如，医疗保健或交通中使用的软件可能会产生生死攸关的后果，而社交媒体中使用的软件可能会影响公众舆论和行为。 因此，编码人员必须考虑其代码的潜在后果，并确保其设计符合道德和负责任。</p>
+<p>道德考虑在编写干净的代码中起着关键作用，因为干净的代码是高效的、可维护的、道德的和负责任的。 干净的代码遵循行业最佳实践和编码标准，但也考虑到对用户的潜在影响。 例如，干净的代码确保用户数据受到保护，代码安全并且没有漏洞，并且代码不会造成不必要的进一步熵。 最终，道德考虑是编写干净代码的一个重要方面，因为它们确保代码不仅有效，而且符合道德和负责任。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-11-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="/posts/writing-clean-react-code/" data-title="编写简洁 React 代码的 10 个最佳实践" data-via="https://twitter.com/JabinDev"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="/posts/writing-clean-react-code/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="/posts/writing-clean-react-code/" data-title="编写简洁 React 代码的 10 个最佳实践"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="/posts/writing-clean-react-code/" data-title="编写简洁 React 代码的 10 个最佳实践"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="/posts/writing-clean-react-code/" data-title="编写简洁 React 代码的 10 个最佳实践"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/fix-cors-error/" class="prev" rel="prev" title="如何修复CORS错误&#34;No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource&#34;？"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>如何修复CORS错误"No 'Access-Control-Allow-Origin' header is present on the requested resource"？</a>
+            <a href="/posts/nextjs-api-the-complete-guide-in-2023/" class="next" rel="next" title="Nextjs基础介绍（新手参考）">Nextjs基础介绍（新手参考）<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.115.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

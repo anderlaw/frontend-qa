@@ -1,0 +1,668 @@
+[
+  {
+    "categories": null,
+    "content": " Note 众所周知，eval()是JavaScript中的一个强大函数，它可以从文字字符串运行javascript代码，但出于一些不安全的原因，我们不建议使用eval()。 有很多不同的方法可以在应用程序中禁用“eval”，例如重写eval函数，或使用 eslint 检查它在开发环境中的使用情况，并给出警告提醒。 今天我将通过实施“CSP”（内容安全策略）来禁用“eval()”。 ",
+    "date": "2023-12-24",
+    "objectID": "/posts/disable-eval/:0:0",
+    "tags": null,
+    "title": "通过配置“内容安全策略”禁用eval",
+    "uri": "/posts/disable-eval/"
+  },
+  {
+    "categories": null,
+    "content": "什么是“CSP” 内容安全策略 (CSP) 是附加的安全层，有助于检测和缓解某些类型的攻击，包括跨站点脚本 (XSS) 和数据注入攻击。 您可以在服务器端或前端启用“CSP”。 在服务器端，您需要配置 Web 服务器以返回 Content-Security-Policy HTTP 标头。 在前端，您需要配置一个“mata”元素： \u003cmeta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'\" /\u003e 上面的“CSP”限制可用资源仅来自站点的来源。 您可以声明多个语句，并用分号分隔。 您可以在 MDN 上看到其他声明 ",
+    "date": "2023-12-24",
+    "objectID": "/posts/disable-eval/:1:0",
+    "tags": null,
+    "title": "通过配置“内容安全策略”禁用eval",
+    "uri": "/posts/disable-eval/"
+  },
+  {
+    "categories": null,
+    "content": "它与 eval() 有什么关系 CSP 限制了所有可用资源的来源，而JavaScript 代码字符串也是来源的一种，因此当您限制 CSP 策略时，您同时禁止使用 eval() 执行该字符串。 当您配置“CSP”策略时，如果调用了“eval()”，您的浏览器将抛出错误并忽略它： ",
+    "date": "2023-12-24",
+    "objectID": "/posts/disable-eval/:2:0",
+    "tags": null,
+    "title": "通过配置“内容安全策略”禁用eval",
+    "uri": "/posts/disable-eval/"
+  },
+  {
+    "categories": null,
+    "content": "注意事项 不要忘记将 script 放在 CSP 语句的 后面 或使用 async 属性。 否则你不会看到配置内容安全策略起作用 ",
+    "date": "2023-12-24",
+    "objectID": "/posts/disable-eval/:3:0",
+    "tags": null,
+    "title": "通过配置“内容安全策略”禁用eval",
+    "uri": "/posts/disable-eval/"
+  },
+  {
+    "categories": null,
+    "content": "定义css变量 使用变量之前，开发者需要先定义一个自定义属性： 选择器。声明变量规则的应用范围，可以是使用该变量的元素本身，也可以是使用变量的上层元素（父元素、祖父元素、…）。 属性名。以两个减号--开始 属性值。任何有效的 CSS 值 element { --main-bg-color: brown; } #content { --secondary-bg-color:white; } ",
+    "date": "2024-01-10",
+    "objectID": "/posts/use-css-var/:1:0",
+    "tags": null,
+    "title": "如何使用Css变量",
+    "uri": "/posts/use-css-var/"
+  },
+  {
+    "categories": null,
+    "content": "使用css变量 在css属性值里通过var(--main-bg-color)来使用变量。 如： .article{ background-color:var(--main-bg-color); } 注意：.article元素要在定义的变量范围以内。 ",
+    "date": "2024-01-10",
+    "objectID": "/posts/use-css-var/:2:0",
+    "tags": null,
+    "title": "如何使用Css变量",
+    "uri": "/posts/use-css-var/"
+  },
+  {
+    "categories": null,
+    "content": "继承性 上文已经暗示过，自定义元素具有继承性了。因此，通常情况下，我们把css变量定义在:root节点下，这样整个文档都可以使用css变量了，当然也要考虑到项目的具体情况咯。 :root{ --text-main-color:white; --text-secondary-color:grey; } p{ color:var(--text-main-color); } .subtitle{ color:var(--text-secondary-color); } ",
+    "date": "2024-01-10",
+    "objectID": "/posts/use-css-var/:3:0",
+    "tags": null,
+    "title": "如何使用Css变量",
+    "uri": "/posts/use-css-var/"
+  },
+  {
+    "categories": null,
+    "content": "css变量的备用值 所谓的备用值，就是设置了回退方案。 虽然开发者很小心，仍然存在各种变数导致变量值没有被顺利应用，这样样式的设置是无效的，结果就是元素会使用默认的（或继承的）样式，会产生预料之外的结果。 于是，设置合适的备用值就很重要： .article { color: var(--my-var, red); /* Red if --my-var is not defined */ } 当--my-var不生效时会使用red这个值。 ",
+    "date": "2024-01-10",
+    "objectID": "/posts/use-css-var/:4:0",
+    "tags": null,
+    "title": "如何使用Css变量",
+    "uri": "/posts/use-css-var/"
+  },
+  {
+    "categories": null,
+    "content": "js操作css变量 跟操作css属性基本一样，只是要借助getPropertyValue与setProperty。 不过，一般情况下需要修改多条变量，会比较繁琐，一般不会采用这种方式。而是将变量与类名绑定，通过切换类名来修改css变量，比如切换主题就是这样做的。 // 获取一个 Dom 节点上的 CSS 变量 element.style.getPropertyValue(\"--my-var\"); // 获取任意 Dom 节点上的 CSS 变量 getComputedStyle(element).getPropertyValue(\"--my-var\"); // 修改一个 Dom 节点上的 CSS 变量 element.style.setProperty(\"--my-var\", jsVar + 4); ",
+    "date": "2024-01-10",
+    "objectID": "/posts/use-css-var/:5:0",
+    "tags": null,
+    "title": "如何使用Css变量",
+    "uri": "/posts/use-css-var/"
+  },
+  {
+    "categories": null,
+    "content": "hugo网站文章网检索原理 其实就是在编译打包时生成一个index.json文件，里面包含了你写的所有文章：标题、内容等。 然后在页面中请求该json文件，在输入时进行文章匹配。 ",
+    "date": "2024-01-08",
+    "objectID": "/posts/hugo-static-search/:1:0",
+    "tags": ["Hugo", "文章检索"],
+    "title": "Hugo 静态网站增加搜索功能",
+    "uri": "/posts/hugo-static-search/"
+  },
+  {
+    "categories": null,
+    "content": "在hugo配置文件里设置输出字段 在hugo.yaml中或其他的配置文件里增加outputs配置 outputs: home: - \"HTML\" - \"RSS\" - \"JSON\" page: - \"HTML\" - \"RSS\" 重新运行本地服务器，尝试打开http://localhost:1313/index.json,如果能看到json数据则证明配置成功。 ",
+    "date": "2024-01-08",
+    "objectID": "/posts/hugo-static-search/:2:0",
+    "tags": ["Hugo", "文章检索"],
+    "title": "Hugo 静态网站增加搜索功能",
+    "uri": "/posts/hugo-static-search/"
+  },
+  {
+    "categories": null,
+    "content": "完善检索功能 有了数据，有能力的人（对于前端工程师轻而易举）可以自己实现增加界面元素\u003cinput type=\"text\"/\u003e，然后监听输入事件，之后进行数据匹配，将匹配到的数绘制到界面中，让用户得以选择阅读就行了。 当然，也可以选择一些现成的插件：Search tools里提供了好多现成可用的插件方案。 ",
+    "date": "2024-01-08",
+    "objectID": "/posts/hugo-static-search/:3:0",
+    "tags": ["Hugo", "文章检索"],
+    "title": "Hugo 静态网站增加搜索功能",
+    "uri": "/posts/hugo-static-search/"
+  },
+  {
+    "categories": null,
+    "content": "文件切片在前端大文件上传时有很好的应用效果，可以将文件控制在更小的粒度，毕竟操作大文件困难，而操作小粒度的文件更简单高效。文本介绍前端和Nodejs中文件的切片与合并操作。 ",
+    "date": "2024-01-08",
+    "objectID": "/posts/js-slice-concat-file/:0:0",
+    "tags": ["File", "分片上传", "断点续传"],
+    "title": "javascript中文件的切片与合并",
+    "uri": "/posts/js-slice-concat-file/"
+  },
+  {
+    "categories": null,
+    "content": "前端中对文件切片、合并 先说切片，切片主要用到Blob接口的slice()方法。 //用户通过\u003cinput type=file/\u003e 选择文件后拿到到filelists const file = filelists[0]; const partSize = 1024*1024;//每片2MB大小 const finalSegments = [];//切好的片按照顺序放到这里。 for(let i =0;i\u003cfile.size;i+=partSize){ //此处的i+partSize超出文件的size不会报错而是当成文件的size值。 finalSegments.push(file.slice(i,i+partSize)); } 切完片剩下的就是将小文件一个个的上传到后端即可，上传时也要把切片的序号一并带过去，方便后端在全部上传好后按照顺序组装合并成一个。 再来说前端如何将几个切好的小文件合并成一个完整文件。 const file_segments = []; Promise.all([ fetch('/file1').then(res =\u003e res.blob()), fetch('/file2').then(res =\u003e res.blob()), fetch('/file3').then(res =\u003e res.blob()), ]).then(blobs =\u003e { const new_file = new File(blobs,'file.pdf'); }) 如果涉及到下载，可以加上以下代码： const a = document.createElement('a') a.download = new_file.name; a.href = URL.createObjectURL(newFile); a.click(); ",
+    "date": "2024-01-08",
+    "objectID": "/posts/js-slice-concat-file/:1:0",
+    "tags": ["File", "分片上传", "断点续传"],
+    "title": "javascript中文件的切片与合并",
+    "uri": "/posts/js-slice-concat-file/"
+  },
+  {
+    "categories": null,
+    "content": "Nodejs中对文件的切片与合并 nodejs中处理文件就相对简单多了，只用到了buffer的subarray和Buffer.concat方法。 const fs = require('fs') const buffer = fs.readFileSync('file.pdf') //切割 const part1 = buffer.subarray(0,1024*1024);//1MB const part2 = buffer.subarray(1024*1024,2*1024*1024);//2MB //保存文件切片 fs.writeFileSync('./part1',part1); fs.writeFileSync('./part2',part2); //合并文件切片 const mergedFileBuffer = Buffer.concat([part1,part2]); //保存到文件磁盘 fs.writeFileSync(\"./merged-file.pdf\",mergedFileBuffer); ",
+    "date": "2024-01-08",
+    "objectID": "/posts/js-slice-concat-file/:2:0",
+    "tags": ["File", "分片上传", "断点续传"],
+    "title": "javascript中文件的切片与合并",
+    "uri": "/posts/js-slice-concat-file/"
+  },
+  {
+    "categories": null,
+    "content": "再说断点续传 断点续传本质就是先处理文件的切片，等到所有切片处理完之后再由程序进行合并。 我认为，断点续传可以用在上传中也可以用在下载的过程中，因为有了文件切片， 可以将尚未上传或下载的blob切片数据做存储（web端已经可以借助indexDB缓存blob数据了），同时计算上传或下载进度，下次重启设备时继续上传或下载，当所有切片处理完毕，再合并提示用户成功。 但是web应用不比原生应用，其存储空间有限，如果文件太大会导致缓存失败，这是web端受限的地方。 ",
+    "date": "2024-01-08",
+    "objectID": "/posts/js-slice-concat-file/:3:0",
+    "tags": ["File", "分片上传", "断点续传"],
+    "title": "javascript中文件的切片与合并",
+    "uri": "/posts/js-slice-concat-file/"
+  },
+  {
+    "categories": null,
+    "content": "jsonwebtoken是一个npm包，提供了关于jsonwebtoken的生成、检查方法。 ",
+    "date": "2024-01-07",
+    "objectID": "/posts/jwt_in_nodejs_project/:0:0",
+    "tags": ["JWT"],
+    "title": "如何在Nodejs中使用JWT",
+    "uri": "/posts/jwt_in_nodejs_project/"
+  },
+  {
+    "categories": null,
+    "content": "安装 npm install jsonwebtoken ",
+    "date": "2024-01-07",
+    "objectID": "/posts/jwt_in_nodejs_project/:1:0",
+    "tags": ["JWT"],
+    "title": "如何在Nodejs中使用JWT",
+    "uri": "/posts/jwt_in_nodejs_project/"
+  },
+  {
+    "categories": null,
+    "content": "生成token 返回一个token字符串 import jwt from \"jsonwebtoken\"; //语法： export function sign( payload: string | Buffer | object, secretOrPrivateKey: Secret, options?: SignOptions, ): string; jwt.sign( jsObject, privateKey,//密钥，可选。可为任意字符串 { expiresIn: seconds，algorithm:\"RS256\" } //expiresIn 表示token的过期时间，数字表示秒数，字符串则有其他用法 ); //返回示例: // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoxNzA0NDU1MTg1NzE2LCJ0eXBlIjoidGVzdCIsImlhdCI6MTcwNDQ1NTE4NSwiZXhwIjoxNzA0NDU4Nzg1fQ.EGWRaDvmNxkzaUT8FJ1Me-xEEWwkycT3WEzx6O09UBY 注意事项：在签写token时，payload尽量使用object类型的,否则的话设置过期时间时会抛出错误，应该是个bug，没有理由string形式的payload不支持设置过期时间这一基本属性 。 ",
+    "date": "2024-01-07",
+    "objectID": "/posts/jwt_in_nodejs_project/:2:0",
+    "tags": ["JWT"],
+    "title": "如何在Nodejs中使用JWT",
+    "uri": "/posts/jwt_in_nodejs_project/"
+  },
+  {
+    "categories": null,
+    "content": "检验token export function verify( token: string, secretOrPublicKey: Secret, options?: VerifyOptions \u0026 { complete?: false }, ): JwtPayload | string; const decode_data = jwt.verify(token, privateKey); //返回示例： //{ iat,exp,...payload } verify方法会检查token的有效性，有效则返回一个拷贝了原始对象属性、包含了iat，exp属性的新对象: iat表示token的生成时间戳（1970年来的秒 数） exp表示token的实效时间戳（1970年来的秒数）。 无效则会抛出错误,因此需要增加try、catch来捕获错误： try{ jwt.verify(token,privateKey) }catch(e){ } ",
+    "date": "2024-01-07",
+    "objectID": "/posts/jwt_in_nodejs_project/:3:0",
+    "tags": ["JWT"],
+    "title": "如何在Nodejs中使用JWT",
+    "uri": "/posts/jwt_in_nodejs_project/"
+  },
+  {
+    "categories": null,
+    "content": "其他设置 还可以设置audience属性来标记不同的token，在options对象传入字段：audience。 在verify时增加audioence属性来校验。 具体签写的options接口和验证的options接口如下： export interface SignOptions { /** * Signature algorithm. Could be one of these values : * - HS256: HMAC using SHA-256 hash algorithm (default) * - HS384: HMAC using SHA-384 hash algorithm * - HS512: HMAC using SHA-512 hash algorithm * - RS256: RSASSA using SHA-256 hash algorithm * - RS384: RSASSA using SHA-384 hash algorithm * - RS512: RSASSA using SHA-512 hash algorithm * - ES256: ECDSA using P-256 curve and SHA-256 hash algorithm * - ES384: ECDSA using P-384 curve and SHA-384 hash algorithm * - ES512: ECDSA using P-521 curve and SHA-512 hash algorithm * - none: No digital signature or MAC value included */ algorithm?: Algorithm | undefined; keyid?: string | undefined; /** expressed in seconds or a string describing a time span [zeit/ms](https://github.com/zeit/ms.js). Eg: 60, \"2 days\", \"10h\", \"7d\" */ expiresIn?: string | number | undefined; /** expressed in seconds or a string describing a time span [zeit/ms](https://github.com/zeit/ms.js). Eg: 60, \"2 days\", \"10h\", \"7d\" */ notBefore?: string | number | undefined; audience?: string | string[] | undefined; subject?: string | undefined; issuer?: string | undefined; jwtid?: string | undefined; mutatePayload?: boolean | undefined; noTimestamp?: boolean | undefined; header?: JwtHeader | undefined; encoding?: string | undefined; allowInsecureKeySizes?: boolean | undefined; allowInvalidAsymmetricKeyTypes?: boolean | undefined; } export interface VerifyOptions { algorithms?: Algorithm[] | undefined; audience?: string | RegExp | Array\u003cstring | RegExp\u003e | undefined; clockTimestamp?: number | undefined; clockTolerance?: number | undefined; /** return an object with the decoded `{ payload, header, signature }` instead of only the usual content of the payload. */ complete?: boolean | undefined; issuer?: string | string[] | undefined; ignoreExpiration?: boolean | undefined; ignoreNotBefore?: boolean | undefined; jwtid?: string | undefined; /** * If you want to check `nonce` claim, provide a string value here. * It is used on Open ID for the ID Tokens. ([Open ID implementation notes](https://openid.net/specs/openid-connect-core-1_0.html#NonceNotes)) */ nonce?: string | undefined; subject?: string | undefined; maxAge?: string | number | undefined; allowInvalidAsymmetricKeyTypes?: boolean | undefined; } ",
+    "date": "2024-01-07",
+    "objectID": "/posts/jwt_in_nodejs_project/:4:0",
+    "tags": ["JWT"],
+    "title": "如何在Nodejs中使用JWT",
+    "uri": "/posts/jwt_in_nodejs_project/"
+  },
+  {
+    "categories": null,
+    "content": "渲染 预渲染： 默认情况下，Next.js 预渲染每个页面。 预渲染可以带来更好的性能。 Nextjs 同时支持一种或多种渲染模式： 在 服务器端渲染 (SSR) 模式下，页面 HTML 是在每次请求时生成的。 在静态站点生成 (SSG) 模式下，页面 HTML 是在构建时生成的。 在 客户端渲染 (CSR) 模式下，页面 HTML 由 javascript 在客户端生成。 ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:1:0",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "路由 ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:2:0",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "Link： 在客户端进行路由转换。 import Link from 'next/link'; \u003cLink href=\"/about\"\u003eA link\u003c/Link\u003e \u003cLink href={{ pathname: '/blog/[slug]', query: { slug: 'post-one'}, }}\u003eA link\u003c/Link\u003e ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:2:1",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "useRouter 和 withRouter useRouter 是一个在函数组件内部使用的钩子。 import { useRouter } from 'next/router'; const router = useRouter(); router.push('url') useRouter 返回的对象是 router 对象，它包含一些您可能想要检索的属性。 withRouter 是一个可以在函数组件和类组件内部使用的钩子，它将把 router 对象传递给你的包装组件。 import { withRouter } from 'next/router' class MyComponent extends React.Component\u003cMyComponentProps\u003e { render() { return \u003cbutton onClick={()=\u003e{ this.props.router.push('a new url') }}\u003eclick\u003c/button\u003e } } export default withRouter(MyComponent) ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:2:2",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "router 它有很多我们可以使用的有用的属性和方法。 pathname: String query: Object asPath: String isFallback: boolean basePath: String locale: String locales: String[] defaultLocale: String domainLocales: Array\u003c{domain, defaultLocale, locales}\u003e isReady: boolean isPreview: boolean router.push 处理客户端转换，将新的 URL 条目添加到历史堆栈中。 router.push(url, as, options) url: UrlObject | String as: UrlObject | String options: {scroll:boolean,shallow:boolean,locale:string}. router.replace 防止将新的 URL 条目添加到历史堆栈中，而是替换。 用法就像router.push方法一样。 router.prefetch 预取页面以实现更快的客户端转换，用于无需下一个/链接的导航，因为下一个/链接会自动处理预取页面。 router.prefetch(url, as, options) router.back 返回上一个路由。 与window.history.back()相同。 router.back() router.reload 重新加载当前 URL 路由器.reload() router.beforePopState 监听popstate 并在导航操作之前做一些事情。 router.beforePopState(({url,as,选项}) =\u003e { //在导航操作之前做一些事情 }) router.events.on 监听组件内的不同事件。 useEffect(() =\u003e { const handleRouteChange = (url, { shallow }) =\u003e { console.log( `App is changing to ${url} ${ shallow ? 'with' : 'without' } shallow routing` ) } router.events.on('routeChangeStart', handleRouteChange) // If the component is unmounted, unsubscribe // from the event with the `off` method: return () =\u003e { router.events.off('routeChangeStart', handleRouteChange) } }, [router]) 事件类型： routeChangeStart(url, {shallow }) - 当路线开始改变时触发 routeChangeComplete(url, {shallow }) - 当路线完全改变时触发 routeChangeError(err, url, {shallow }) - 更改路由时出错或取消路由加载时触发 beforeHistoryChange(url, {shallow }) - 在更改浏览器历史记录之前触发 hashChangeStart(url, {shallow }) - 当哈希发生变化但页面不变时触发 hashChangeComplete(url, {shallow }) - 当哈希值已更改但页面未更改时触发 ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:2:3",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "数据获取 获取静态属性 可用于静态站点生成，它将在构建时运行 获取静态路径 如果页面具有“动态路由”并使用“getStaticProps”，则需要定义要静态生成的路径列表。 获取ServerSideProps getServerSideProps 是一个 Next.js 函数，可用于在请求时获取数据并呈现页面内容。 客户端获取 您可以使用多种方式在客户端获取数据，这取决于您。 with useEffect useEffect(() =\u003e { fetch('/api/profile-data') .then((res) =\u003e res.json()) .then((data) =\u003e { setData(data) setLoading(false) }) }, []) with swr import useSWR from 'swr' const fetcher = (...args) =\u003e fetch(...args).then((res) =\u003e res.json()) function Profile() { const { data, error } = useSWR('/api/profile-data', fetcher) if (error) return \u003cdiv\u003eFailed to load\u003c/div\u003e if (!data) return \u003cdiv\u003eLoading...\u003c/div\u003e return ( \u003cdiv\u003e \u003ch1\u003e{data.name}\u003c/h1\u003e \u003cp\u003e{data.bio}\u003c/p\u003e \u003c/div\u003e ) } ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:2:4",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "样式 ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:3:0",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "CSS 模块 您所能做的就是在与组件相同的路径下创建一个.module.css扩展文件。 //button.module.css .error { color: white; background-color: red; } //button.js import styles from './button.module.css' \u003cbutton className={styles.error}\u003e Click Me \u003c/button\u003e ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:3:1",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "Tailwind CSS Tailwind CSS 是一个实用程序优先的 CSS 框架，与 Next.js 配合得非常好。 ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:3:2",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "Sass //next.config.js const path = require('path') module.exports = { sassOptions: { includePaths: [path.join(__dirname, 'styles')], }, } ",
+    "date": "2023-12-18",
+    "objectID": "/posts/nextjs-api-the-complete-guide-in-2023/:3:3",
+    "tags": null,
+    "title": "Nextjs基础介绍（新手参考）",
+    "uri": "/posts/nextjs-api-the-complete-guide-in-2023/"
+  },
+  {
+    "categories": null,
+    "content": "编写干净的 React 代码很重要，因为它反映了仔细和专注的心态。 当我们花时间编写干净、组织良好的代码时，我们就展示了对软件开发技术的承诺。 干净的代码证明我们重视工作质量，并愿意投入所需的时间和精力来创造真正卓越的东西。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:0:0",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "为什么组织和编写干净的 React 代码很重要？ 出于实际原因以及视觉影响，干净的代码组织在 React 中非常重要。 精心设计和组织良好的代码库可以在视觉上令人愉悦，使其更易于使用和理解。 当代码混乱无序时，可能很难理解不同的元素如何组合在一起形成最终产品。 这可能会导致处理代码的开发人员和将与应用程序交互的最终用户感到困惑。 同样，当代码干净且组织良好时，可以更轻松地查看不同元素之间的关系，了解它们如何组合在一起，并根据需要进行更改。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:1:0",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "如何编写干净的 React 代码？ 编写干净的代码对于使项目具有可读性、可扩展性和可维护性至关重要。 以下是编写干净 React 代码的十个最佳 React 技巧： ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:0",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用有意义的组件名称 给出反映其功能的组件名称。 避免使用“Box”或“DoesTheThing”等通用名称。 有意义的名称使人们更容易理解组件的功能及其在应用程序中的用途。 清晰简洁的组件名称可以减轻开发人员的认知负担，从而更轻松地导航和维护代码库。 当与多个开发人员一起开发项目时，清晰且有意义的组件名称可以帮助每个人理解代码并更有效地协作。 如果一个组件根据其用途来命名，将来会更容易维护、重构或修改。 此外，当您为组件指定一个有意义的名称时，它有助于在调试时轻松地在代码库中找到该组件。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:1",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "分解组件 将复杂的组件分解为更小、更易于管理的组件可以更轻松地理解和维护代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 较小的组件也更容易理解，从而更容易修复错误和添加新功能。 同样，较小的组件更容易测试，从而更容易编写有效的单元测试并确保代码质量。 分解组件可以让您分离应用程序的关注点，并有助于管理和理解代码库。 它可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:2",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用解构 解构 props 和 state 使代码更加简洁和可读。 您可以编写“const {title} = props”，而不是编写“props.title”。 它允许您以更简洁和可读的方式从对象或数组中提取值，从而减少需要编写的代码量。 解构可以通过显式声明您感兴趣的属性或元素来使代码更具可读性。 它还可以帮助防止在访问不存在的属性或元素时出现错误。 通过分析代码的哪些部分使用了哪些值，可以更轻松地重构代码，并且可以通过仅提取所需的值来简化在组件之间传递 props 的过程。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:3",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "保持较小的组件 保持组件较小并专注于单一职责可以更轻松地测试和调试代码。 较小的组件更容易在应用程序中重用，从而更容易维护和扩展代码库。 它们更容易理解和维护，更容易修复错误和添加新功能。 较小的组件也更容易测试，从而更容易编写有效的单元测试并确保代码质量。 将组件分解为更小的部分可以让您分离应用程序的关注点，从而更轻松地管理和理解代码库。 较小的组件还可以通过减少浏览器需要呈现或处理的代码量来帮助提高应用程序的性能。 除了这些好处之外，保持组件较小还可以使协作变得更容易 通过降低各个组件的复杂性并允许进行更有针对性和更细致的讨论，与其他开发人员合作。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:4",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用prop-types 使用“prop-types”来记录和验证传递给组件的 props 类型有助于防止错误。 Prop 类型有助于确保将正确的数据类型传递到组件中，从而减少出现运行时错误的可能性。 Prop 类型充当组件的文档，明确每个组件需要什么类型的数据以及组件如何处理这些数据。 当不正确的数据类型传递到组件时，它们可以通过提供有用的错误消息来帮助识别代码问题。 使用 prop 类型可以明确每个组件需要哪些数据并减少对如何使用组件的困惑，从而有助于促进开发人员之间的协作。 使用 prop 类型可以降低运行时错误的可能性并使其更易于维护和可读，从而提高代码的整体质量。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:5",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用功能组件 尽可能使用函数式组件而不是类组件是明智的，因为函数式组件更易于阅读和编写。 函数组件通常比类组件更快、更高效，因为它们不需要构造函数或生命周期方法。 函数组件通常比类组件更简单、更容易阅读，因为它们也没有那么多的样板代码。 功能组件通常是无状态的，这意味着它们不维护自己的状态。 这使得它们更容易推理和测试。 它们是使用 React hook 的主要方式，它提供了管理状态和副作用的强大方法。 由于功能组件通常是无状态的，并且具有一组清晰的输入和输出，因此它们通常更容易推理和调试。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:6",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "避免使用内联样式 使用 CSS 类而不是内联样式将表示与逻辑分开，并使维护和更新设计变得更容易。 将样式与组件逻辑分离可以改善关注点分离，从而更容易维护和修改代码。 通过将样式保存在单独的 CSS 文件中，可以更轻松地管理和维护代码库，尤其是在处理较大的应用程序时。 使用外部样式表或 CSS 模块可以更轻松地跨多个组件重用样式，从而减少代码重复量。 通过分离样式，可以更轻松地启用浏览器缓存，这有助于提高应用程序的性能。 通过明确区分样式和组件逻辑，可以更轻松地调试样式或组件逻辑出现的问题。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:7",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用箭头函数 箭头函数使代码更加简洁，更易于阅读。 它们是用 JavaScript 编写函数的更好方法，可以生成更清晰、更易读的代码。 箭头函数自动绑定到父作用域，这在您需要访问父作用域的“this”关键字的情况下非常有用。 箭头函数无需使用 bind() 方法将“this”关键字绑定到组件的方法，这可以简化您的代码。 与传统函数相比，箭头函数可以提供更好的性能，因为它们不会创建新的词法范围。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:8",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用无状态组件 应尽可能使用无状态组件。 有状态组件更加复杂且难以推理。 无状态组件更容易重用和组合，因为它们只需根据通过 props 传递给它们的数据进行渲染。 它们也更容易测试，因为它们没有任何内部状态需要管理。 无状态组件通常也比有状态组件更快、更高效，因为它们不必管理自己的状态。 考虑到无状态组件的内部状态管理，它们也更容易扩展，并且可以在应用程序的不同部分轻松重用。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:9",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "使用扩展运算符 在 React 代码中使用扩展运算符 (…) 很重要，原因有几个，例如它允许您编写更短、更简洁的代码，尤其是在使用数组或对象时。 扩展运算符允许您创建新的 对象或数组而不修改原始数据，这是函数式编程的一个重要原则。 它允许您轻松地将属性从一个对象复制到另一个对象，这在更新组件状态时非常有用。 扩展运算符允许您合并对象，这在处理复杂的数据结构时非常有用。 或者最聪明的是，扩展运算符也可以用于将 props 传播到子组件，从而减少需要编写的样板代码量。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:2:10",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "结论 程序员在编写代码时必须考虑道德规范，因为他们创建的软件可能会产生重大影响。 例如，医疗保健或交通中使用的软件可能会产生生死攸关的后果，而社交媒体中使用的软件可能会影响公众舆论和行为。 因此，编码人员必须考虑其代码的潜在后果，并确保其设计符合道德和负责任。 道德考虑在编写干净的代码中起着关键作用，因为干净的代码是高效的、可维护的、道德的和负责任的。 干净的代码遵循行业最佳实践和编码标准，但也考虑到对用户的潜在影响。 例如，干净的代码确保用户数据受到保护，代码安全并且没有漏洞，并且代码不会造成不必要的进一步熵。 最终，道德考虑是编写干净代码的一个重要方面，因为它们确保代码不仅有效，而且符合道德和负责任。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/writing-clean-react-code/:3:0",
+    "tags": null,
+    "title": "编写简洁 React 代码的 10 个最佳实践",
+    "uri": "/posts/writing-clean-react-code/"
+  },
+  {
+    "categories": null,
+    "content": "如今有多种在线应​​用程序可用。现在大多数系统都提供某种形式的在线用户界面。这些接口处理客户端呈现或如何将其显示给用户。用户可以与网络应用程序交互并从服务器请求信息或更新。数据保存在服务器可以访问的数据库中。客户端 Web 应用程序向 Web 服务器请求信息，服务器通过从数据库检索信息来响应该信息。由于数据或信息可能敏感，因此必须采取安全保护措施以确保其完整性。 CORS（即跨域资源共享）是一种提供数据完整性的安全程序。 我们将在本文中研究 CORS 是什么以及它的一般工作原理。我们将了解什么是预检请求以及 CORS 如何依赖它们。此外，我们将介绍如何使用 CORS 并解决应用程序中由此产生的问题。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:0:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "什么是同源策略？ 在互联网安全中，同源策略限制从一个源加载的文档或脚本与从另一源加载的资源的交互。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:1:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "什么是 CORS？ CORS 代表跨源资源共享。当一个域向另一个域请求资源时，称为跨域请求。出于安全考虑，我们可能只希望少数域（除了我们自己的域）能够访问服务器的资源。这就是 CORS 的用武之地。CORS 技术允许服务器指定将从 HTTP 标头以外的其他来源（域、方案或端口）加载的资源。 在 CORS 之前，出于安全考虑，无法在单独的域中调用 API 端点。同源策略可以防止这种情况发生。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:2:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "为什么我们需要 CORS？ 此方法可以阻止黑客在不同网站上安装恶意脚本。例如，黑客可能通过 AJAX 调用 example.com 并代表登录用户进行修改。 不过，跨域访问也是有益的，甚至在其他一些真实情况下也是必需的。例如，如果我们的 React Web 应用程序调用在单独域上设置的 API 后端。如果没有 CORS，这是不可能的。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:3:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "CORS 是如何工作的？ CORS 使服务器能够显式允许特定源，从而使其能够覆盖同源限制。如果我们设置 CORS 服务器，每个响应将包含一个带有“Access-Control-Allow-Origin”键的附加标头。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:4:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "What are simple requests? 简单请求是在发送实际请求之前不开始预检请求的请求。一个简单的请求满足以下所有要求： 该请求使用允许的方法之一，例如“GET”、“HEAD”或“POST”。 除了“用户代理”生成的标头之外，唯一可以手动设置的标头是： Accept Accept-Language Content-Language Content-Type The Content-Type header can only include one of the following values: application/x-www-form-urlencoded multipart/form-data text/plain 没有与“XMLHttpRequest.upload”关联的事件侦听器。 该请求不使用“ReadableStream”对象。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:5:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "什么是预检请求？ CORS 预检请求检查服务器使用特定方法和标头的能力以及服务器对“CORS”协议的了解。 浏览器自动生成预检请求。因此，前端开发人员通常不需要编写它们。 使用“Access-Control-Max-Age”标头，可以有选择地缓存在同一 URL 发出的请求的预检响应。浏览器对预检响应采用独特的缓存，与浏览器的标准 HTTP 缓存不同。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:6:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "凭证请求 CORS 还能够发出“经过认证的”请求。在这些请求中，服务器和客户端可以通过 cookie（可能保存必要的凭据）进行通信。 默认情况下，CORS 不包含跨域请求的 cookie。在跨域请求中包含 cookie 可能会导致称为跨站点请求伪造 (CSRF) 的漏洞。 CORS 需要服务器和客户端确认是否可以在请求中包含 cookie，以减少 CSRF 漏洞的可能性。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:7:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "CORS 中使用的 HTTP 响应标头 我们通过在响应中包含额外的标头来说明 CORS 的工作原理，指示源是否在服务器的白名单上。让我们看一下 CORS 为此使用的一些标头。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:8:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "Access-Control-Allow-Origin Access-Control-Allow-Origin 标头定义源并指示浏览器允许该源在没有凭据的情况下访问服务器资源。它还可能包含一个通配符“*”，它指示浏览器任何来源都可以在没有凭据的情况下访问服务器的资源。 Access-Control-Allow-Origin: * 但是，对于包含凭据或 cookie 的请求，我们通常不能在 Access-Control-Allow-Origin 标头中使用通配符。在这种情况下，只应提供一个来源。 Access-Control-Allow-Origin: www.example.com ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:8:1",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "Access-Control-Max-Age 浏览器可以使用“Access-Control-Max-Age”标头将预检请求存储给定的时间长度。 Access-Control-Max-Age: 1800 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:8:2",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "Access-Control-Allow-Methods 它用于响应预检请求，以指定允许访问资源的方法。 Access-Control-Allow-Methods: GET, POST, PUT ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:8:3",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "Access-Control-Allow-Headers 作为预检请求的一部分，Access-Control-Allow-Headers 标头指定客户端在实际请求期间可以使用哪些 HTTP 标头。 Access-Control-Allow-Headers: Content-Type ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:8:4",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "如何修复 CORS 错误 在构建 Web 应用程序时，您可能遇到过 CORS 错误“请求的站点上不存在‘access-control-allow-origin’标头”。发生这种情况是因为预检请求中没有向浏览器发送任何标头来通知浏览器是否允许源访问该资源。 这个问题有多种解决方案。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:9:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "在后端处理（nodejs） 为了解决 CORS 问题，我们可以手动为每个请求添加必要的标头。每当我们的服务器收到资源请求时，我们将使用中间件来设置这些标头。使用以下代码创建一个中间件来设置所需的标头以解决 CORS 错误。 app.use((req, res, next) =\u003e { res.setHeader(\"Access-Control-Allow-Origin\", \"*\"); res.setHeader(\"Access-Control-Allow-Methods\", \"POST, GET, PUT\"); res.setHeader(\"Access-Control-Allow-Headers\", \"Content-Type\"); next(); }) 这里我们将原点设置为*。这意味着简单的请求，如 GET、HEAD 或 POST；服务器允许所有源访问服务器的资源。 如果客户端的浏览器发送预检请求，则可能会出现问题。用于处理预检请求的来源不应是通配符或 *。因此，我们可以稍微更新一下代码来解决预检请求。 app.use((req, res, next) =\u003e { res.setHeader(\"Access-Control-Allow-Origin\", \"https://example.com\"); res.setHeader(\"Access-Control-Allow-Methods\", \"POST, GET, PUT\"); res.setHeader(\"Access-Control-Allow-Headers\", \"Content-Type\"); next(); }) 作为中间件的替代方案，我们可以在特定端点上使用 app.options 方法来侦听预检请求。预检请求是“OPTIONS”请求（而不是“GET”、“POST”或“PUT”）。 app.options(\"/\", (req, res) =\u003e { res.setHeader(\"Access-Control-Allow-Origin\", \"https://example.com\"); res.setHeader(\"Access-Control-Allow-Methods\", \"POST, GET, PUT\"); res.setHeader(\"Access-Control-Allow-Headers\", \"Content-Type\"); res.sendStatus(204); }); 此外，您可以使用“cors”NPM 包。 安装： npm install cors 使用： const cors = require(\"cors\"); app.use(cors({ origin: 'https://example.com' })); ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:9:1",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "在前端处理 如果您不控制前端代码向其发送请求的服务器，并且您正在使用像React、Vue、Angular 等这样的框架，您可以通过 CORS 代理插件发出请求，轻松让事情正常工作。 这是用于代理的vue Cli里的配置: module.exports = { devServer: { proxy: { '^/api': { target: '\u003curl\u003e', ws: true, changeOrigin: true }, '^/foo': { target: '\u003cother_url\u003e' } } } } ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:9:2",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "结论 本文向我们介绍了 CORS 是什么以及它的一般工作原理。此外，我们还研究了预检请求是什么以及 CORS 如何依赖它们。最后，我们学习了如何使用 CORS 并解决应用程序中由此产生的问题。 ",
+    "date": "2023-11-16",
+    "objectID": "/posts/fix-cors-error/:10:0",
+    "tags": null,
+    "title": "如何修复CORS错误\"No 'Access-Control-Allow-Origin' header is present on the requested resource\"？",
+    "uri": "/posts/fix-cors-error/"
+  },
+  {
+    "categories": null,
+    "content": "关于 LoveIt",
+    "date": "2019-08-02",
+    "objectID": "/about/",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "  LoveIt 是一个由  Dillon 开发的简洁、优雅且高效的 Hugo 博客主题。 它的原型基于 LeaveIt 主题 和 KeepIt 主题。 Hugo 主题 LoveIt ",
+    "date": "2019-08-02",
+    "objectID": "/about/:0:0",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "特性 ",
+    "date": "2019-08-02",
+    "objectID": "/about/:1:0",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "性能和 SEO  性能优化：在 Google PageSpeed Insights 中， 99/100 的移动设备得分和 100/100 的桌面设备得分  使用基于 JSON-LD 格式 的 SEO SCHEMA 文件进行 SEO 优化  支持 Google Analytics  支持 Fathom Analytics  支持 Plausible Analytics  支持 Yandex Metrica  支持搜索引擎的网站验证 (Google, Bind, Yandex and Baidu)  支持所有第三方库的 CDN  基于 lazysizes 自动转换图片为懒加载 ",
+    "date": "2019-08-02",
+    "objectID": "/about/:1:1",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "外观和布局  桌面端/移动端 响应式布局  浅色/深色 主题模式  全局一致的设计语言  支持分页  易用和自动展开的文章目录  支持多语言和国际化  美观的 CSS 动画 社交和评论系统  支持 Gravatar 头像  支持本地头像  支持多达 73 种社交链接  支持多达 24 种网站分享  支持 Disqus 评论系统  支持 Gitalk 评论系统  支持 Valine 评论系统  支持 Facebook comments 评论系统  支持 Telegram comments 评论系统  支持 Commento 评论系统  支持 utterances 评论系统  支持 giscus 评论系统 ",
+    "date": "2019-08-02",
+    "objectID": "/about/:1:2",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "扩展功能  支持基于 Lunr.js 或 algolia 的搜索  支持 Twemoji  支持代码高亮  一键复制代码到剪贴板  支持基于 lightGallery 的图片画廊  支持 Font Awesome 图标的扩展 Markdown 语法  支持上标注释的扩展 Markdown 语法  支持分数的扩展 Markdown 语法  支持基于 $\\KaTeX$ 的数学公式  支持基于 mermaid 的图表 shortcode  支持基于 ECharts 的交互式数据可视化 shortcode  支持基于 Mapbox GL JS 的 Mapbox shortcode  支持基于 APlayer 和 MetingJS 的音乐播放器 shortcode  支持 Bilibili 视频 shortcode  支持多种注释的 shortcode  支持自定义样式的 shortcode  支持自定义脚本的 shortcode  支持基于 TypeIt 的打字动画 shortcode  支持基于 cookieconsent 的 Cookie 许可横幅  支持人物标签的 shortcode … ",
+    "date": "2019-08-02",
+    "objectID": "/about/:1:3",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "许可协议 LoveIt 根据 MIT 许可协议授权。 更多信息请查看 LICENSE 文件。 ",
+    "date": "2019-08-02",
+    "objectID": "/about/:2:0",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": null,
+    "content": "特别感谢 LoveIt 主题中用到了以下项目，感谢它们的作者： normalize.css Font Awesome Simple Icons Animate.css autocomplete Lunr.js algoliasearch lazysizes object-fit-images Twemoji emoji-data lightGallery clipboard.js Sharer.js TypeIt $\\KaTeX$ mermaid ECharts Mapbox GL JS APlayer MetingJS Gitalk Valine cookieconsent ",
+    "date": "2019-08-02",
+    "objectID": "/about/:3:0",
+    "tags": null,
+    "title": "关于 LoveIt",
+    "uri": "/about/"
+  },
+  {
+    "categories": ["Angular"],
+    "content": "如何安装AngularJS",
+    "date": "2019-08-02",
+    "objectID": "/posts/install/",
+    "tags": null,
+    "title": "安装 Angular",
+    "uri": "/posts/install/"
+  },
+  {
+    "categories": ["Angular"],
+    "content": "npm install angular ",
+    "date": "2019-08-02",
+    "objectID": "/posts/install/:0:0",
+    "tags": null,
+    "title": "安装 Angular",
+    "uri": "/posts/install/"
+  },
+  {
+    "categories": ["Angular"],
+    "content": "如何配置",
+    "date": "2019-08-02",
+    "objectID": "/posts/config/",
+    "tags": null,
+    "title": "项目中配置 Angular",
+    "uri": "/posts/config/"
+  },
+  {
+    "categories": ["Angular"],
+    "content": "npm set config angular ",
+    "date": "2019-08-02",
+    "objectID": "/posts/config/:0:0",
+    "tags": null,
+    "title": "项目中配置 Angular",
+    "uri": "/posts/config/"
+  }
+]
