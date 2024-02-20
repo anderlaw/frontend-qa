@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hugo - Tag - 前端研磨坊</title>
+        <link>/tags/hugo/</link>
+        <description>Hugo - Tag - 前端研磨坊</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 08 Jan 2024 11:45:38 &#43;0800</lastBuildDate><atom:link href="/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>Hugo 静态网站增加搜索功能</title>
+    <link>/posts/hugo-static-search/</link>
+    <pubDate>Mon, 08 Jan 2024 11:45:38 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>/posts/hugo-static-search/</guid>
+    <description><![CDATA[之前没有给博客增加文章检索功能，今天看到别人的博客都有这个功能，并且用来检索之前发布的文章蛮好用的，今天给博客增加上去，遇到了一些坑，今天记录一下。]]></description>
+</item>
+</channel>
+</rss>
