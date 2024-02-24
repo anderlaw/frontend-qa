@@ -128,7 +128,7 @@
   [params.section]
     # special amount of posts in each section page
     # section 页面每页显示文章数量
-    paginate = 20
+    paginate = 10
     # date format (month and day)
     # 日期格式 (月和日)
     dateFormat = "01-02"
@@ -441,7 +441,7 @@
     # Comment config
     # 评论系统设置
     [params.page.comment]
-      enable = false
+      enable = true
       # Disqus comment config (https://disqus.com/)
       # Disqus 评论系统设置 (https://disqus.com/)
       [params.page.comment.disqus]
@@ -526,11 +526,11 @@
       [params.page.comment.giscus]
         # You can refer to the official documentation of giscus to use the following configuration.
         # 你可以参考官方文档来使用下列配置
-        enable = false
-        repo = ""
-        repoId = ""
+        enable = true
+        repo = "anderlaw/frontend-qa"
+        repoId = "R_kgDOJzIv2g"
         category = "Announcements"
-        categoryId = ""
+        categoryId = "DIC_kwDOJzIv2s4Cdegx"
         # automatically adapt the current theme i18n configuration when empty
         # 为空时自动适配当前主题 i18n 配置
         lang = ""
