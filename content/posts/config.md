@@ -13,3 +13,4 @@ math:
 ```javascript
 npm set config angular
 ```
+哈 哈 哈

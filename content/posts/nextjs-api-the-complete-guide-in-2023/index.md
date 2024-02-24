@@ -2,7 +2,7 @@
 title: "Nextjs基础介绍（新手参考）"
 date: 2023-12-18T12:15:58+08:00
 draft: false
-image: banner.png
+featuredImage: banner.png
 summary: 
 ---
 
